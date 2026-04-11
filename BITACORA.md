@@ -37,7 +37,11 @@ Desarrollar un asistente fiscal inteligente que automatice la auditoría prevent
     * Corrección de **Ventas Exentas**: Ahora se consultan montos reales del 607 en lugar de valores dummy.
     * Actualización de **Tasas TSS**: Implementadas constantes reales (16.39% total) para SFS, AFP, SRL e INFOTEP en la conciliación laboral.
   * **Optimización DB**: Añadidos índices `idx_socios_empresa` e `idx_socios_madre` para acelerar el motor de beneficiario final en multinivel.
-  * **Accesibilidad**: Configuración de voz optimizada con acento de España (`es-ES`) y aumento de timeout para fluidez en reportes narrados.
+  * **Accesibilidad**: Configuración de voz optimizada con acento de México (`es-MX`) tras pruebas de compatibilidad.
+  * **Restauración de Infraestructura (Sesión de Emergencia)**: 
+    * **Git Rescue**: Reinicializado el repositorio principal en `AiContaFiscalRD` tras pérdida de vínculo de worktree. 
+    * **Sync Total**: Fusionados y verificados todos los cambios de la Fase 3 en el nuevo repositorio maestro.
+    * **Audio Recovery**: Canal de voz de VS Code restaurado y verificado bidireccionalmente.
 
 * **Industrialización de Entregables IR-2:**
   * Generación Atómica de **XML (OFV Ready)**, **Excel (Pre-validador)** y **PDF (Auditoría)**.
@@ -53,11 +57,9 @@ Desarrollar un asistente fiscal inteligente que automatice la auditoría prevent
 1. **Módulo de Planificación Fiscal IA**: Análisis predictivo de flujo de caja para anticipar pagos de ISR.
 2. **Integración Bancaria vía API**: Conciliación automática de estados financieros con movimientos bancarios.
 3. **App Móvil de Consulta**: Dashboard simplificado para el dueño de la empresa (CEO View).
-4. **Sincronización Git**: Resolver el error de "worktree" entre las áreas de trabajo.
 
 ## 6. Deuda Técnica y Pendientes
 * **Validación de IR-17**: Confirmar cálculos con datos de un cliente real de retenciones masivas.
-* **Sincronización de Workspace**: Mover cambios locales de Antigravity al repo principal de AiContaFiscalRD.
 
 ***
 *Última actualización: 2026-04-11 -- Agente Antigravity (Socio Tecnológico)*

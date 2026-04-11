@@ -1,0 +1,32 @@
+{
+  "parent": {
+    "type": "page_id",
+    "page_id": "3324332f-8b18-805c-b67e-d93abed9cd91"
+  },
+  "title": [
+    {
+      "type": "text",
+      "text": {
+        "content": "📂 Documentación y Recursos"
+      }
+    }
+  ],
+  "properties": {
+    "Documento": {
+      "title": {}
+    },
+    "Tipo": {
+      "select": {
+        "options": [
+          {"name": "Legal", "color": "purple"},
+          {"name": "DGII", "color": "blue"},
+          {"name": "Técnica", "color": "gray"},
+          {"name": "Arquitectura", "color": "brown"}
+        ]
+      }
+    },
+    "Enlace / Archivo": {
+      "url": {}
+    }
+  }
+}

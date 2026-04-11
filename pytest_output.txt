@@ -1,0 +1,19 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.7, pytest-9.0.2, pluggy-1.6.0 -- C:\Python313\python.exe
+cachedir: .pytest_cache
+rootdir: C:\GEMINI\AiContaFiscalRD
+plugins: anyio-4.11.0
+collecting ... collected 10 items
+
+tests/test_motor.py::test_limpiar_monto_con_coma PASSED                  [ 10%]
+tests/test_motor.py::test_limpiar_monto_vacio PASSED                     [ 20%]
+tests/test_motor.py::test_limpiar_monto_basura PASSED                    [ 30%]
+tests/test_motor.py::test_redondeo_half_up PASSED                        [ 40%]
+tests/test_motor.py::test_ncf_b04_es_anulacion PASSED                    [ 50%]
+tests/test_motor.py::test_ncf_e34_es_anulacion PASSED                    [ 60%]
+tests/test_motor.py::test_renta_imponible_no_negativa PASSED             [ 70%]
+tests/test_motor.py::test_isr_27_porciento PASSED                        [ 80%]
+tests/test_motor.py::test_isr_pagar_no_negativo PASSED                   [ 90%]
+tests/test_motor.py::test_cruce_simetrico_detecta_diferencia PASSED      [100%]
+
+============================= 10 passed in 2.54s ==============================

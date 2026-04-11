@@ -1,0 +1,22 @@
+{
+    "status": "Calculado Exitosamente",
+    "anexo_d": {
+        "D_Casilla_1_Inventario_Inicial": 2883081.0,
+        "D_Casilla_2_Compras_Locales": 152344.63000000003,
+        "D_Casilla_3_Importaciones": 0.0,
+        "D_Total_Mercancia_Disponible": 3035425.63,
+        "D_Casilla_5_Inventario_Final": 0.0,
+        "D_Total_Costo_Ventas": 3035425.63
+    },
+    "anexo_a": {
+        "A_Casilla_1_Ingresos_Operaciones": 16355367.700000001,
+        "A_Casilla_10_Costo_Ventas": 3035425.63,
+        "A_Casilla_11_Renta_Bruta": 13319942.07,
+        "A_Casilla_XX_Gastos_Operativos": 777353.72,
+        "A_Total_Renta_Neta_Antes_ISR": 12542588.35
+    },
+    "otros_datos_ir2": {
+        "anticipos_pagados_para_ir2": 946848.22,
+        "retenciones_sufridas_para_ir2": 57713.61
+    }
+}

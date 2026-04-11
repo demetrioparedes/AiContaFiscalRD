@@ -1,0 +1,16 @@
+{
+    "analisis_contable_excel": {
+        "ingresos": 16355367.700000001,
+        "itbis_ventas": 2943966.1859999998,
+        "compras_locales": 152344.63000000003,
+        "importaciones": 1333917.27,
+        "anticipos_pagados": 946848.22,
+        "retenciones_0804": 57713.61
+    },
+    "anexos_año_anterior": {
+        "inventario_final_anexod": 2883081.0
+    },
+    "cruces_dgii": {
+        "compras_reportadas_606": 929698.35
+    }
+}

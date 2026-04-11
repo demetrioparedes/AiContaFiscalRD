@@ -1,0 +1,39 @@
+{
+    "rnc": "101001002",
+    "nombre": "CONSTRUCTORA NACIONAL RD, SRL",
+    "anio": 2025,
+    "regimen": "ordinario",
+    "inv_inicial": 5000000.0,
+    "inv_final": 4200000.0,
+    "activos": [
+        {
+            "nombre": "Retroexcavadora Caterpillar 320D",
+            "valor": 3500000.0,
+            "vida_util": 4
+        },
+        {
+            "nombre": "Camión Volteo Isuzu 2024",
+            "valor": 1200000.0,
+            "vida_util": 4
+        },
+        {
+            "nombre": "Mezcladora de Hormigón Industrial",
+            "valor": 450000.0,
+            "vida_util": 5
+        }
+    ],
+    "prestamos": [
+        {
+            "entidad": "BANCO DE RESERVAS - Préstamo Comercial",
+            "saldo_inicial": 10000000.0,
+            "nuevos": 0.0,
+            "pagos": 1500000.0,
+            "saldo_final": 8500000.0,
+            "intereses": 1200000.0
+        }
+    ],
+    "directorio": "data/uploads",
+    "analisis_xls": "data/uploads/IR-13 y TSS 2025.xls",
+    "retenciones": 250000.0,
+    "modo": "industrial"
+}

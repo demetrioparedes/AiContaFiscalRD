@@ -1,0 +1,14 @@
+{
+  "parent": { "type": "page_id", "page_id": "3324332f-8b18-805c-b67e-d93abed9cd91" },
+  "title": [{ "type": "text", "text": { "content": "📝 Minutas de Reuniones" } }],
+  "properties": {
+    "Sesión / Reunión": { "title": {} },
+    "Fecha": { "date": {} },
+    "Participantes": { "multi_select": { "options": [
+      { "name": "AI Agent", "color": "blue" },
+      { "name": "Stakeholder DGII", "color": "orange" },
+      { "name": "PM", "color": "purple" }
+    ] } },
+    "Pendientes": { "checkbox": {} }
+  }
+}

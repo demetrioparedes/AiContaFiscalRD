@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\GEMINI\AiContaFiscalRD\test_report.py", line 84, in <module>
+    main()
+    ~~~~^^
+  File "C:\GEMINI\AiContaFiscalRD\test_report.py", line 11, in main
+    sys.stdout = open(r"c:\GEMINI\AiContaFiscalRD\resultado_humo.txt", "w", encoding="utf-8")
+                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'c:\\GEMINI\\AiContaFiscalRD\\resultado_humo.txt'

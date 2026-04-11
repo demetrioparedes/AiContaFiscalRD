@@ -1,0 +1,14 @@
+{
+  "parent": { "type": "page_id", "page_id": "3324332f-8b18-805c-b67e-d93abed9cd91" },
+  "title": [{ "type": "text", "text": { "content": "🗓️ Roadmap de Hitos" } }],
+  "properties": {
+    "Hito": { "title": {} },
+    "Fecha Entrega": { "date": {} },
+    "Estado": { "status": {} },
+    "Importancia": { "select": { "options": [
+      { "name": "Crítico", "color": "red" },
+      { "name": "Alto", "color": "orange" },
+      { "name": "Medio", "color": "yellow" }
+    ] } }
+  }
+}

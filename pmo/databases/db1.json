@@ -1,0 +1,34 @@
+{
+  "parent": {
+    "type": "page_id",
+    "page_id": "3324332f-8b18-805c-b67e-d93abed9cd91"
+  },
+  "title": [
+    {
+      "type": "text",
+      "text": {
+        "content": "📖 Bitácora del Proyecto"
+      }
+    }
+  ],
+  "properties": {
+    "Nombre de Sesión": {
+      "title": {}
+    },
+    "Fecha": {
+      "date": {}
+    },
+    "Estado": {
+      "select": {
+        "options": [
+          {"name": "Completado", "color": "green"},
+          {"name": "En progreso", "color": "blue"},
+          {"name": "Pendiente", "color": "red"}
+        ]
+      }
+    },
+    "Resumen": {
+      "rich_text": {}
+    }
+  }
+}

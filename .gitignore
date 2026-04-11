@@ -1,0 +1,21 @@
+# Entorno
+.env
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Datos y Salidas
+data/aicontafiscal_core.db
+data/uploads/*
+!data/uploads/.gitkeep
+data/output/*
+!data/output/.gitkeep
+
+# IDEs
+.vscode/
+.idea/

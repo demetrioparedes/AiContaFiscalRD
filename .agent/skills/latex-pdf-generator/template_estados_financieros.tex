@@ -1,0 +1,276 @@
+\documentclass[10pt,letterpaper]{article}
+
+%--------------------------------
+% PAQUETES
+%--------------------------------
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{newtxtext,newtxmath} % Tipografía profesional
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+
+%--------------------------------
+% CONFIGURACIÓN
+%--------------------------------
+\geometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm}
+
+\sisetup{
+group-separator = {,},
+group-minimum-digits = 3
+}
+
+\renewcommand{\arraystretch}{1.3}
+
+\definecolor{corporate}{RGB}{0,51,102}
+
+% Encabezados
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+
+% Estilo títulos
+\titleformat{\section}
+{\Large\bfseries\color{corporate}}
+{}{0em}{}
+
+\titleformat{\subsection}
+{\bfseries\color{corporate}}
+{}{0em}{}
+
+%--------------------------------
+% DOCUMENTO
+%--------------------------------
+
+\begin{document}
+
+%--------------------------------
+% PORTADA
+%--------------------------------
+
+\begin{titlepage}
+\centering
+
+\vspace*{4cm}
+
+{\Huge\textbf{{{COMPANY_NAME}}S.R.L.}}
+
+\vspace{1cm}
+
+\rule{12cm}{1pt}
+
+\vspace{1.5cm}
+
+{\Large\textbf{ESTADOS FINANCIEROS}}
+
+\vspace{0.5cm}
+
+Al 31 de diciembre de {{YEAR}} y {{PREVIOUS_YEAR}}
+
+\vspace{0.5cm}
+
+Con el Informe del Auditor Independiente
+
+\vfill
+
+Santo Domingo, República Dominicana
+
+\end{titlepage}
+
+\newpage
+
+%--------------------------------
+% INFORME DEL AUDITOR
+%--------------------------------
+
+\section*{INFORME DEL AUDITOR INDEPENDIENTE}
+
+\textbf{A los socios de:}
+
+{{COMPANY_NAME}}S.R.L.
+
+\subsection*{Opinión}
+
+Hemos auditado los estados financieros adjuntos de la Compañía, que comprenden el estado de situación financiera al 31 de diciembre de {{YEAR}} y {{PREVIOUS_YEAR}}, y los estados de resultados integrales, cambios en el patrimonio y flujos de efectivo por los años terminados en esas fechas.
+
+En nuestra opinión, los estados financieros presentan razonablemente, en todos los aspectos materiales, la situación financiera de la Compañía de conformidad con las Normas Internacionales de Información Financiera para Pequeñas y Medianas Entidades (NIIF para PYMES).
+
+\vspace{1cm}
+
+\textbf{Lic. {{AUDITOR_NAME}}}  
+Contador Público Autorizado  
+Exequatur No. {{EXEQUATUR_NO}}  
+
+\newpage
+
+%--------------------------------
+% BALANCE GENERAL
+%--------------------------------
+
+\section{ESTADO DE SITUACIÓN FINANCIERA}
+
+\begin{tabularx}{\textwidth}{X c S S}
+
+\toprule
+\textbf{ACTIVOS} & Nota & {{{YEAR}}} & {{{PREVIOUS_YEAR}}} \\
+\midrule
+
+\textbf{Activos Corrientes} & & & \\
+
+Efectivo y equivalentes & 4 & {{CASH_CURRENT}} & {{CASH_PREV}} \\
+Cuentas por cobrar & 5 & {{AR_CURRENT}} & {{AR_PREV}} \\
+Inventarios & 6 & {{INV_CURRENT}} & {{INV_PREV}} \\
+
+\textbf{Total Activos Corrientes} & & {{TOTAL_CA_CURRENT}} & {{TOTAL_CA_PREV}} \\
+
+\addlinespace
+
+\textbf{Activos No Corrientes} & & & \\
+
+Propiedad planta y equipo & 7 & {{PPE_CURRENT}} & {{PPE_PREV}} \\
+
+\textbf{Total Activos No Corrientes} & & {{TOTAL_NCA_CURRENT}} & {{TOTAL_NCA_PREV}} \\
+
+\midrule
+
+\textbf{TOTAL ACTIVOS} & & {{TOTAL_ASSETS_CURRENT}} & {{TOTAL_ASSETS_PREV}} \\
+
+\bottomrule
+\end{tabularx}
+
+\vspace{1cm}
+
+\begin{tabularx}{\textwidth}{X c S S}
+
+\toprule
+\textbf{PASIVOS Y PATRIMONIO} & Nota & {{{YEAR}}} & {{{PREVIOUS_YEAR}}} \\
+\midrule
+
+\textbf{Pasivos Corrientes} & & & \\
+
+Cuentas por pagar proveedores & 8 & {{AP_CURRENT}} & {{AP_PREV}} \\
+Documentos por pagar & 9 & {{NP_CURRENT}} & {{NP_PREV}} \\
+
+\textbf{Total Pasivos} & & {{TOTAL_LIAB_CURRENT}} & {{TOTAL_LIAB_PREV}} \\
+
+\addlinespace
+
+\textbf{Patrimonio} & & & \\
+
+Capital social & 10 & {{CAPITAL_CURRENT}} & {{CAPITAL_PREV}} \\
+Resultados acumulados & & {{RE_CURRENT}} & {{RE_PREV}} \\
+Resultado del ejercicio & & {{NI_CURRENT}} & {{NI_PREV}} \\
+
+\textbf{Total Patrimonio} & & {{TOTAL_EQ_CURRENT}} & {{TOTAL_EQ_PREV}} \\
+
+\midrule
+
+\textbf{TOTAL PASIVOS Y PATRIMONIO} & & {{TOTAL_LIAB_EQ_CURRENT}} & {{TOTAL_LIAB_EQ_PREV}} \\
+
+\bottomrule
+\end{tabularx}
+
+\newpage
+
+%--------------------------------
+% ESTADO DE RESULTADOS
+%--------------------------------
+
+\section{ESTADO DE RESULTADO INTEGRAL}
+
+\begin{tabularx}{\textwidth}{X S S}
+
+\toprule
+ & {{{YEAR}}} & {{{PREVIOUS_YEAR}}} \\
+\midrule
+
+Ventas & {{SALES_CURRENT}} & {{SALES_PREV}} \\
+Costo de ventas & {{COGS_CURRENT}} & {{COGS_PREV}} \\
+
+\textbf{Utilidad Bruta} & {{GROSS_PROFIT_CURRENT}} & {{GROSS_PROFIT_PREV}} \\
+
+Gastos operativos & {{OPEX_CURRENT}} & {{OPEX_PREV}} \\
+
+\textbf{Utilidad Operativa} & {{OP_INCOME_CURRENT}} & {{OP_INCOME_PREV}} \\
+
+Impuesto sobre la renta & {{TAX_CURRENT}} & {{TAX_PREV}} \\
+
+\textbf{UTILIDAD NETA} & {{NET_INCOME_CURRENT}} & {{NET_INCOME_PREV}} \\
+
+\bottomrule
+\end{tabularx}
+
+\newpage
+
+%--------------------------------
+% CAMBIOS EN EL PATRIMONIO
+%--------------------------------
+
+\section{ESTADO DE CAMBIOS EN EL PATRIMONIO}
+
+\begin{tabular}{lrrr}
+
+\toprule
+Concepto & Capital & Resultados & Total \\
+\midrule
+
+Saldo inicial {{PREVIOUS_YEAR}} & {{CAPITAL_PREV}} & {{BEG_RE_PREV}} & {{TOTAL_BEG_EQ_PREV}} \\
+
+Utilidad {{PREVIOUS_YEAR}} & & {{NI_PREV}} & {{NI_PREV}} \\
+
+Saldo final {{PREVIOUS_YEAR}} & {{CAPITAL_PREV}} & {{RE_PREV}} & {{TOTAL_EQ_PREV}} \\
+
+Utilidad {{YEAR}} & & {{NI_CURRENT}} & {{NI_CURRENT}} \\
+
+Saldo final {{YEAR}} & {{CAPITAL_CURRENT}} & {{RE_CURRENT}} & {{TOTAL_EQ_CURRENT}} \\
+
+\bottomrule
+
+\end{tabular}
+
+\newpage
+
+%--------------------------------
+% NOTAS
+%--------------------------------
+
+\section{NOTAS A LOS ESTADOS FINANCIEROS}
+
+\subsection*{Nota 1 – Entidad}
+
+La empresa fue constituida bajo las leyes de la República Dominicana.
+
+\subsection*{Nota 2 – Base de Preparación}
+
+Los estados financieros han sido preparados conforme a NIIF para PYMES.
+
+\subsection*{Nota 3 – Inventarios}
+
+Los inventarios se miden al costo o valor neto realizable.
+
+\subsection*{Nota 4 – Préstamos}
+
+\begin{tabular}{lrr}
+
+\toprule
+ & {{YEAR}} & {{PREVIOUS_YEAR}} \\
+\midrule
+
+Préstamos bancarios & {{BANK_LOANS_CURRENT}} & {{BANK_LOANS_PREV}} \\
+Partes relacionadas & {{RELATED_PARTY_CURRENT}} & {{RELATED_PARTY_PREV}} \\
+
+\textbf{Total deuda} & {{TOTAL_DEBT_CURRENT}} & {{TOTAL_DEBT_PREV}} \\
+
+\bottomrule
+
+\end{tabular}
+
+\end{document}

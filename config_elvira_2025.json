@@ -1,0 +1,31 @@
+{
+  "rnc": "130826552",
+  "nombre": "ELVIRA CARTERAS S.R.L",
+  "anio": 2025,
+  "regimen": "ordinario",
+  "modo": "rapido",
+
+  "inv_inicial": 2883081.00,
+  "inv_final": 0.00,
+  "retenciones": 57713.61,
+
+  "prestamos": [
+    {
+      "entidad": "Prestamos DOP NHD",
+      "saldo_inicial": 5426080.51,
+      "nuevos": 1359514.15,
+      "pagos": 0.0,
+      "saldo_final": 6785594.66,
+      "intereses": 0.0
+    },
+    {
+      "entidad": "Prestamos USD NHD",
+      "saldo_inicial": 50926.40,
+      "nuevos": 4365.88,
+      "pagos": 0.0,
+      "saldo_final": 55292.28,
+      "intereses": 0.0
+    }
+  ],
+  "analisis_xls": "G:\\Mi unidad\\Backup NAS (NO TOCAR)\\PGA\\13 DECLARACION IR-2 2025\\IR-2 2025 ELVIRA\\ANALISIS 2025.xls"
+}

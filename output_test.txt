@@ -1,0 +1,14 @@
+
+=== TEST limpiar_monto() ===
+  OK  entrada='4474.43'    esperado=4474.43    obtenido=4474.43
+  OK  entrada='800.57'     esperado=800.57     obtenido=800.57
+  OK  entrada='1,270.62'   esperado=1270.62    obtenido=1270.62
+  OK  entrada='7764.9'     esperado=7764.90    obtenido=7764.90
+  OK  entrada=''           esperado=0.00       obtenido=0.00
+  OK  entrada='None'       esperado=0.00       obtenido=0.00
+  OK  entrada='abc'        esperado=0.00       obtenido=0.00
+  OK  entrada='0.005'      esperado=0.01       obtenido=0.01
+  OK  entrada='0.004'      esperado=0.00       obtenido=0.00
+
+TODOS LOS CASOS PASAN
+

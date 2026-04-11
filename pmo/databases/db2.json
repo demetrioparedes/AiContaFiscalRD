@@ -1,0 +1,37 @@
+{
+  "parent": {
+    "type": "page_id",
+    "page_id": "3324332f-8b18-805c-b67e-d93abed9cd91"
+  },
+  "title": [
+    {
+      "type": "text",
+      "text": {
+        "content": "✅ Tablero de Tareas"
+      }
+    }
+  ],
+  "properties": {
+    "Nombre de la Tarea": {
+      "title": {}
+    },
+    "Estado": {
+      "select": {
+        "options": [
+          {"name": "To-Do", "color": "gray"},
+          {"name": "In Progress", "color": "blue"},
+          {"name": "Done", "color": "green"}
+        ]
+      }
+    },
+    "Prioridad": {
+      "select": {
+        "options": [
+          {"name": "Alta", "color": "red"},
+          {"name": "Media", "color": "yellow"},
+          {"name": "Baja", "color": "default"}
+        ]
+      }
+    }
+  }
+}

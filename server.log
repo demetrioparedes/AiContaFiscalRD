@@ -1,0 +1,379 @@
+INFO:     127.0.0.1:50167 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+LLAMANDO A: https://api.groq.com/openai/v1/chat/completions
+MODELO: meta-llama/llama-4-scout-17b-16e-instruct
+INFO:     127.0.0.1:50169 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55872 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54458 - "GET /api/clientes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54976 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56620 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56620 - "GET /api/riesgo?cliente_id=1&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:63308 - "POST /api/procesar_rapido/1/2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63308 - "GET /api/riesgo?cliente_id=1&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:61936 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51837 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52316 - "GET /api/clientes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52316 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52316 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:63323 - "POST /api/procesar_rapido/2/2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63323 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:50839 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58839 - "GET /api/clientes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50873 - "GET /api/clientes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64137 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:64335 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64335 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:57594 - "GET /static/style.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59210 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53882 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55799 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:50128 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50128 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:59112 - "GET /index.html HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:55417 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:49295 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:53228 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61041 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:53406 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54752 - "GET /api/clientes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56925 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56925 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:50060 - "POST /api/procesar HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:50060 - "GET /api/riesgo?cliente_id=2&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:61019 - "GET /api/clientes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61019 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61019 - "GET /api/riesgo?cliente_id=1&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:60929 - "POST /api/procesar HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:60929 - "GET /api/riesgo?cliente_id=1&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:53334 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60175 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55135 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57443 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57443 - "GET /api/riesgo?cliente_id=1&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:59862 - "POST /api/procesar HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:59862 - "GET /api/riesgo?cliente_id=1&periodo=2025 HTTP/1.1" 422 Unprocessable Content
+INFO:     127.0.0.1:64547 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50237 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50237 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54002 - "GET /static/index.html%20en%20el%20navegador. HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54002 - "GET /static/index.html%20en%20el%20navegador. HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54002 - "GET /api/static/index.html HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54002 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54002 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59891 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:59891 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+=== AiContaFiscalRD BD [existente (esquema actualizado)] | 13 tablas | WAL mode activo ===
+
+[1/6] Registrando empresa: ELVIRA CARTERAS SRL (RNC: 130826552)...
+     [i] Empresa ya existe (ID: 1)
+============================================================
+  AiContaFiscalRD ù MOTOR ETL (Arquitectura Big4)
+============================================================
+  Ingestando Carpeta: C:\GEMINI\AiContaFiscalRD\data\clientes\130826552 | Periodo: 2025
+
+  [606] Analizando: DGII_F_606_130826552_202401.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 8
+  [606] Analizando: DGII_F_606_130826552_202402.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 9
+  [606] Analizando: DGII_F_606_130826552_202403.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 11
+  [606] Analizando: DGII_F_606_130826552_202404.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 2
+  [606] Analizando: DGII_F_606_130826552_202405.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 8
+  [606] Analizando: DGII_F_606_130826552_202406.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 12
+  [606] Analizando: DGII_F_606_130826552_202412.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 8
+  [606] Analizando: DGII_F_606_130826552_202501.TXT
+    [OK] Insertados: 5 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202503.TXT
+    [OK] Insertados: 12 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202504.TXT
+    [OK] Insertados: 9 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202505.TXT
+    [OK] Insertados: 5 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202506.TXT
+    [OK] Insertados: 13 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202508.TXT
+    [OK] Insertados: 8 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202509.TXT
+    [OK] Insertados: 1 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202511.TXT
+    [OK] Insertados: 6 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202512.TXT
+    [OK] Insertados: 3 | Invalidos/Saltados: 0
+  [607] Analizando: DGII_F_607_130826552_202401.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 37
+  [607] Analizando: DGII_F_607_130826552_202402.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 49
+  [607] Analizando: DGII_F_607_130826552_202403.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 61
+  [607] Analizando: DGII_F_607_130826552_202404.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 24
+  [607] Analizando: DGII_F_607_130826552_202405.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 66
+  [607] Analizando: DGII_F_607_130826552_202406.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 40
+  [607] Analizando: DGII_F_607_130826552_202412.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 50
+  [607] Analizando: DGII_F_607_130826552_202501.txt
+  [X] Falla 607 DGII_F_607_130826552_202501.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202502.txt
+  [X] Falla 607 DGII_F_607_130826552_202502.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202503.txt
+  [X] Falla 607 DGII_F_607_130826552_202503.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202504.txt
+  [X] Falla 607 DGII_F_607_130826552_202504.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202505.txt
+  [X] Falla 607 DGII_F_607_130826552_202505.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202506.txt
+  [X] Falla 607 DGII_F_607_130826552_202506.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202507.txt
+  [X] Falla 607 DGII_F_607_130826552_202507.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202508.txt
+  [X] Falla 607 DGII_F_607_130826552_202508.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202509.txt
+  [X] Falla 607 DGII_F_607_130826552_202509.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202510.txt
+  [X] Falla 607 DGII_F_607_130826552_202510.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202511.txt
+  [X] Falla 607 DGII_F_607_130826552_202511.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202512.txt
+  [X] Falla 607 DGII_F_607_130826552_202512.TXT: name 'itbis' is not defined
+    [IT-1] Insertados/Actualizados: 12 | Errores: 0
+  [606] Analizando: Terceros_130826552_2025_606.xls
+
+============================================================
+  RESUMEN FINAL ETL (Empresa ID 1):
+  - Registros DGII 606 insertados: 62
+  - Registros DGII 607 insertados: 0
+  - Declaraciones IT-1 cargadas:   12
+============================================================
+
+[Modulo 3] Generando Estado de Resultados 2025...
+  Inventario inicial (ano anterior): RD$            0.00
+  Ventas Totales:     RD$   23,909,018.46
+  Costo de Ventas:    RD$    6,085,828.32
+  Utilidad Bruta:     RD$   17,823,190.14
+  Gastos Operativos:  RD$    2,875,689.26
+  Utilidad Operativa: RD$   14,947,500.88
+  ISR (27%):          RD$    4,035,825.24
+
+[Modulo 5] Ejecutando los 18 Cruces Fiscales (Auditoria BIG4)...
+  [OK] CRUCE 01 | Ventas 607 vs ER               | Sist: 23,909,018 | DGII: 23,909,018 | Dif: 0
+  [!!] CRUCE 02 | ITBIS Fac vs IT-1              | Sist: 0 | DGII: 4,303,065 | Dif: 4,303,065
+  [!!] CRUCE 03 | Ventas Gravadas vs IT-1        | Sist: 0 | DGII: 23,909,018 | Dif: 23,909,018
+  [OK] CRUCE 04 | Ventas Exentas                 | Sist: 0 | DGII: 0 | Dif: 0
+  [OK] CRUCE 06 | Regla de Notas Credito (20%)   | Sist: 4,781,804 | DGII: 0 | Dif: 4,781,804
+  [OK] CRUCE 10 | Margen Bruto Minimo DGII       | Sist: 2,390,902 | DGII: 17,823,190 | Dif: 0
+  [OK] CRUCE 07 | Compras 606 vs ER Gastos       | Sist: 8,961,518 | DGII: 8,961,518 | Dif: 0
+  [!!] CRUCE 08 | ITBIS Compras vs IT-1 Cr.      | Sist: 0 | DGII: 1,500,078 | Dif: 1,500,078
+  [OK] CRUCE 11 | Compras vs Ventas (< 90%)      | Sist: 21,518,117 | DGII: 8,961,518 | Dif: 0
+  [OK] CRUCE 15 | Margen Bruto Contable          | Sist: 17,823,190 | DGII: 17,823,190 | Dif: 0
+  [OK] CRUCE 16 | Tope de Gastos Mßgicos         | Sist: 2,875,689 | DGII: 8,961,518 | Dif: 6,085,828
+  [OK] CRUCE 18 | Consistencia de Renta Imp.     | Sist: 14,947,501 | DGII: 14,947,501 | Dif: 0
+  [OK] CRUCE 13 | Retenciones N≤mina vs IR-13    | Sist: 0 | DGII: 0 | Dif: 0
+  [OK] CRUCE 17 | Depuraci≤n Gasto TSS           | Sist: 4,214,857 | DGII: 4,214,857 | Dif: 0
+
+  [OK] Motor Auditorφa BIG4 Executed. Errores Crφticos detectados: 3
+=================================================================
+  AiContaFiscalRD - GENERADOR FINAL DE ENTREGABLES  [ORDINARIO]
+=================================================================
+
+[2/3] Generando archivos de salida...
+  -> Generando IR-2 en Excel...
+     [+] Excel generado: c:\GEMINI\AiContaFiscalRD\data\output\IR2_2025_130826552_COMPLETO.xlsx
+  -> Inyectando valores en plantilla LaTeX...
+     [+] LaTeX generado:  c:\GEMINI\AiContaFiscalRD\data\output\EstadosFinancieros_2025_130826552.tex
+     [i] Para compilar PDF: sube el .tex a https://www.overleaf.com
+
+=================================================================
+  RESUMEN EJECUTIVO - ELVIRA CARTERAS SRL
+=================================================================
+  Ventas Netas:       RD$    23,909,018.46
+  Costo de Ventas:    RD$     6,085,828.32
+  Utilidad Bruta:     RD$    17,823,190.14
+  Gastos Totales:     RD$     2,875,689.26
+  Renta Imponible:    RD$    14,947,500.88
+  ISR Causado (27%):  RD$     4,035,825.24
+  (-) Anticipos:      RD$             0.00
+  (-) Retenciones:    RD$             0.00
+  ISR A PAGAR:        RD$             0.00
+=================================================================
+  [OK] Archivos generados en: c:\GEMINI\AiContaFiscalRD\data\output
+=================================================================
+INFO:     127.0.0.1:56101 - "POST /api/procesar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63759 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63759 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63759 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49170 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52659 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52158 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50531 - "GET /static/index.html HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50531 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58122 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:58122 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65261 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53540 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+=== AiContaFiscalRD BD [existente (esquema actualizado)] | 13 tablas | WAL mode activo ===
+
+[1/6] Registrando empresa: ELVIRA CARTERAS SRL (RNC: 130826552)...
+     [i] Empresa ya existe (ID: 1)
+============================================================
+  AiContaFiscalRD ù MOTOR ETL (Arquitectura Big4)
+============================================================
+  Ingestando Carpeta: C:\GEMINI\AiContaFiscalRD\data\clientes\130826552 | Periodo: 2025
+
+  [606] Analizando: DGII_F_606_130826552_202401.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 8
+  [606] Analizando: DGII_F_606_130826552_202402.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 9
+  [606] Analizando: DGII_F_606_130826552_202403.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 11
+  [606] Analizando: DGII_F_606_130826552_202404.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 2
+  [606] Analizando: DGII_F_606_130826552_202405.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 8
+  [606] Analizando: DGII_F_606_130826552_202406.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 12
+  [606] Analizando: DGII_F_606_130826552_202412.TXT
+    [OK] Insertados: 0 | Invalidos/Saltados: 8
+  [606] Analizando: DGII_F_606_130826552_202501.TXT
+    [OK] Insertados: 5 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202503.TXT
+    [OK] Insertados: 12 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202504.TXT
+    [OK] Insertados: 9 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202505.TXT
+    [OK] Insertados: 5 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202506.TXT
+    [OK] Insertados: 13 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202508.TXT
+    [OK] Insertados: 8 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202509.TXT
+    [OK] Insertados: 1 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202511.TXT
+    [OK] Insertados: 6 | Invalidos/Saltados: 0
+  [606] Analizando: DGII_F_606_130826552_202512.TXT
+    [OK] Insertados: 3 | Invalidos/Saltados: 0
+  [607] Analizando: DGII_F_607_130826552_202401.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 37
+  [607] Analizando: DGII_F_607_130826552_202402.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 49
+  [607] Analizando: DGII_F_607_130826552_202403.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 61
+  [607] Analizando: DGII_F_607_130826552_202404.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 24
+  [607] Analizando: DGII_F_607_130826552_202405.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 66
+  [607] Analizando: DGII_F_607_130826552_202406.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 40
+  [607] Analizando: DGII_F_607_130826552_202412.txt
+    [OK] Insertados: 0 | Invalidos/Saltados: 50
+  [607] Analizando: DGII_F_607_130826552_202501.txt
+  [X] Falla 607 DGII_F_607_130826552_202501.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202502.txt
+  [X] Falla 607 DGII_F_607_130826552_202502.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202503.txt
+  [X] Falla 607 DGII_F_607_130826552_202503.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202504.txt
+  [X] Falla 607 DGII_F_607_130826552_202504.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202505.txt
+  [X] Falla 607 DGII_F_607_130826552_202505.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202506.txt
+  [X] Falla 607 DGII_F_607_130826552_202506.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202507.txt
+  [X] Falla 607 DGII_F_607_130826552_202507.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202508.txt
+  [X] Falla 607 DGII_F_607_130826552_202508.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202509.txt
+  [X] Falla 607 DGII_F_607_130826552_202509.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202510.txt
+  [X] Falla 607 DGII_F_607_130826552_202510.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202511.txt
+  [X] Falla 607 DGII_F_607_130826552_202511.TXT: name 'itbis' is not defined
+  [607] Analizando: DGII_F_607_130826552_202512.txt
+  [X] Falla 607 DGII_F_607_130826552_202512.TXT: name 'itbis' is not defined
+    [IT-1] Insertados/Actualizados: 12 | Errores: 0
+  [606] Analizando: Terceros_130826552_2025_606.xls
+
+============================================================
+  RESUMEN FINAL ETL (Empresa ID 1):
+  - Registros DGII 606 insertados: 62
+  - Registros DGII 607 insertados: 0
+  - Declaraciones IT-1 cargadas:   12
+============================================================
+
+[Modulo 3] Generando Estado de Resultados 2025...
+  Inventario inicial (ano anterior): RD$            0.00
+  Ventas Totales:     RD$   23,909,018.46
+  Costo de Ventas:    RD$    6,865,526.67
+  Utilidad Bruta:     RD$   17,043,491.79
+  Gastos Operativos:  RD$    3,025,689.26
+  Utilidad Operativa: RD$   14,017,802.53
+  ISR (27%):          RD$    3,784,806.68
+
+[Modulo 5] Ejecutando los 18 Cruces Fiscales (Auditoria BIG4)...
+  [OK] CRUCE 01 | Ventas 607 vs ER               | Sist: 23,909,018 | DGII: 23,909,018 | Dif: 0
+  [!!] CRUCE 02 | ITBIS Fac vs IT-1              | Sist: 0 | DGII: 4,303,065 | Dif: 4,303,065
+  [!!] CRUCE 03 | Ventas Gravadas vs IT-1        | Sist: 0 | DGII: 23,909,018 | Dif: 23,909,018
+  [OK] CRUCE 04 | Ventas Exentas                 | Sist: 0 | DGII: 0 | Dif: 0
+  [OK] CRUCE 06 | Regla de Notas Credito (20%)   | Sist: 4,781,804 | DGII: 0 | Dif: 4,781,804
+  [OK] CRUCE 10 | Margen Bruto Minimo DGII       | Sist: 2,390,902 | DGII: 17,043,492 | Dif: 0
+  [OK] CRUCE 07 | Compras 606 vs ER Gastos       | Sist: 9,891,216 | DGII: 9,891,216 | Dif: 0
+  [!!] CRUCE 08 | ITBIS Compras vs IT-1 Cr.      | Sist: 0 | DGII: 1,652,422 | Dif: 1,652,422
+  [OK] CRUCE 11 | Compras vs Ventas (< 90%)      | Sist: 21,518,117 | DGII: 9,891,216 | Dif: 0
+  [OK] CRUCE 15 | Margen Bruto Contable          | Sist: 17,043,492 | DGII: 17,043,492 | Dif: 0
+  [OK] CRUCE 16 | Tope de Gastos Mßgicos         | Sist: 3,025,689 | DGII: 9,891,216 | Dif: 6,865,527
+  [OK] CRUCE 18 | Consistencia de Renta Imp.     | Sist: 14,017,803 | DGII: 14,017,803 | Dif: 0
+  [OK] CRUCE 13 | Retenciones N≤mina vs IR-13    | Sist: 0 | DGII: 0 | Dif: 0
+  [OK] CRUCE 17 | Depuraci≤n Gasto TSS           | Sist: 4,214,857 | DGII: 4,214,857 | Dif: 0
+
+  [OK] Motor Auditorφa BIG4 Executed. Errores Crφticos detectados: 3
+=================================================================
+  AiContaFiscalRD - GENERADOR FINAL DE ENTREGABLES  [ORDINARIO]
+=================================================================
+
+[2/3] Generando archivos de salida...
+  -> Generando IR-2 en Excel...
+     [+] Excel generado: c:\GEMINI\AiContaFiscalRD\data\output\IR2_2025_130826552_COMPLETO.xlsx
+  -> Inyectando valores en plantilla LaTeX...
+     [+] LaTeX generado:  c:\GEMINI\AiContaFiscalRD\data\output\EstadosFinancieros_2025_130826552.tex
+     [i] Para compilar PDF: sube el .tex a https://www.overleaf.com
+
+=================================================================
+  RESUMEN EJECUTIVO - ELVIRA CARTERAS SRL
+=================================================================
+  Ventas Netas:       RD$    23,909,018.46
+  Costo de Ventas:    RD$     6,865,526.67
+  Utilidad Bruta:     RD$    17,043,491.79
+  Gastos Totales:     RD$     3,025,689.26
+  Renta Imponible:    RD$    14,017,802.53
+  ISR Causado (27%):  RD$     3,784,806.68
+  (-) Anticipos:      RD$             0.00
+  (-) Retenciones:    RD$             0.00
+  ISR A PAGAR:        RD$             0.00
+=================================================================
+  [OK] Archivos generados en: c:\GEMINI\AiContaFiscalRD\data\output
+=================================================================
+INFO:     127.0.0.1:49635 - "POST /api/procesar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56832 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52871 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55009 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62429 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63348 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49974 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60059 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57737 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:57737 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60774 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54700 - "GET /api/clientes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63250 - "GET /static/index.html HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63250 - "GET /api/riesgo?rnc=130826552&anio=2025 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62527 - "POST /api/chat_fiscal HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62760 - "POST /api/chat_fiscal HTTP/1.1" 200 OK

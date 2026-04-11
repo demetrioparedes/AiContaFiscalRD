@@ -1,0 +1,168 @@
+{
+    "archivos_fuente_detectados": [
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "ANALISIS 2025.xls",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "ANEXOA ITBIS 2025-12.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "BALANCE PRESTAMO NHD.docx",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "Compra 2025.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "CRUCE DE TERCERO 2025.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "CxC 2025.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "Fatc Comparat 2025.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "IR-13 y TSS 2025.xls",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "IR-2 2024 ANEXO A ELVIRA.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "IR-2 2024 ANEXO B ELVIRA.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "IR-2 2024 ANEXO D ELVIRA.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "IR-2 2024 ANEXO D2 ELVIRA.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "IR-2 2024 ANEXO J ELVIRA.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "IR-2-2018.xls",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "ITBIS 2025-12.pdf",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "README.md",
+            "estado_extraccion": "procesando"
+        },
+        {
+            "empresa_id": "EMP-001",
+            "nombre_archivo": "RESUMEN 606 2025 DGII.pdf",
+            "estado_extraccion": "procesando"
+        }
+    ],
+    "datos_extraidos": [
+        {
+            "empresa_id": "EMP-001",
+            "archivo_id": "FILE-4AB0D2F4",
+            "tipo_dato": "ventas_gravadas",
+            "descripcion": "Total Ventas Grabadas (Análisis)",
+            "valor": 16355367.700000001,
+            "periodo": "2025",
+            "fuente": "ANALISIS 2025.xls",
+            "confirmado": false,
+            "conflicto": false
+        },
+        {
+            "empresa_id": "EMP-001",
+            "archivo_id": "FILE-2D8D8DB9",
+            "tipo_dato": "itbis_cobrado",
+            "descripcion": "Total ITBIS en Ventas",
+            "valor": 2943966.1859999998,
+            "periodo": "2025",
+            "fuente": "ANALISIS 2025.xls",
+            "confirmado": false,
+            "conflicto": false
+        },
+        {
+            "empresa_id": "EMP-001",
+            "archivo_id": "FILE-EE84A26A",
+            "tipo_dato": "compras_gravadas",
+            "descripcion": "[CONFLICTO DETECTADO] Compras Locales (Contabilidad)",
+            "valor": 152344.63000000003,
+            "periodo": "2025",
+            "fuente": "ANALISIS 2025.xls",
+            "confirmado": false,
+            "conflicto": true
+        },
+        {
+            "empresa_id": "EMP-001",
+            "archivo_id": "FILE-42D2EDDF",
+            "tipo_dato": "anticipos_isr",
+            "descripcion": "Total Anticipos Pagados",
+            "valor": 946848.22,
+            "periodo": "2025",
+            "fuente": "ANALISIS 2025.xls",
+            "confirmado": false,
+            "conflicto": false
+        },
+        {
+            "empresa_id": "EMP-001",
+            "archivo_id": "FILE-E56A3118",
+            "tipo_dato": "retenciones_sufridas",
+            "descripcion": "Retenciones Norma 08-04",
+            "valor": 57713.61,
+            "periodo": "2025",
+            "fuente": "ANALISIS 2025.xls",
+            "confirmado": false,
+            "conflicto": false
+        },
+        {
+            "empresa_id": "EMP-001",
+            "archivo_id": "FILE-53B9A514",
+            "tipo_dato": "inventario_final",
+            "descripcion": "Inventario Final Año Anterior (Inicial Actual)",
+            "valor": 2883081.0,
+            "periodo": "2024",
+            "fuente": "IR-2 2024 ANEXO D ELVIRA.pdf",
+            "confirmado": false,
+            "conflicto": false
+        },
+        {
+            "empresa_id": "EMP-001",
+            "archivo_id": "FILE-F4CE6ACE",
+            "tipo_dato": "compras_gravadas",
+            "descripcion": "[CONFLICTO DETECTADO] Compras Reportadas en 606 (Acuses)",
+            "valor": 929698.35,
+            "periodo": "2025",
+            "fuente": "RESUMEN 606 2025 DGII.pdf",
+            "confirmado": false,
+            "conflicto": true
+        }
+    ]
+}

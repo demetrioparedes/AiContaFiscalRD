@@ -1,0 +1,585 @@
+<style> .textmode{mso-number-format:\@;}</style><div>
+	<table cellspacing="0" rules="all" border="1" style="border-collapse:collapse;">
+		<tr style="color:White;background-color:#5EB645;">
+			<th scope="col">RNC_CEDULA_FUENTE</th><th scope="col">NOMBRE</th><th scope="col">PERIODO_ITBIS</th><th scope="col">MONTO_FACTURADO</th><th scope="col">ITBIS_PAGADO</th><th scope="col">ITBIS_RETENIDO</th><th scope="col">PROPINA_LEGAL</th>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">8961.87</td><td class="textmode">1613.13</td><td class="textmode">179.24</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">17953.43</td><td class="textmode">3231.57</td><td class="textmode">359.07</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">7504.26</td><td class="textmode">1350.75</td><td class="textmode">150.08</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">6885.61</td><td class="textmode">1239.39</td><td class="textmode">137.71</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">4800.85</td><td class="textmode">864.15</td><td class="textmode">96.02</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">1915.27</td><td class="textmode">344.73</td><td class="textmode">38.31</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">440.68</td><td class="textmode">79.32</td><td class="textmode">8.81</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">677.97</td><td class="textmode">122.03</td><td class="textmode">13.56</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">8012.74</td><td class="textmode">1442.26</td><td class="textmode">160.26</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">59118.66</td><td class="textmode">10641.34</td><td class="textmode">1182.37</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">7826.32</td><td class="textmode">1408.72</td><td class="textmode">156.53</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">22038.16</td><td class="textmode">3966.84</td><td class="textmode">440.76</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">16936.49</td><td class="textmode">3048.51</td><td class="textmode">338.74</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">8754.25</td><td class="textmode">1575.75</td><td class="textmode">175.08</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">2516.96</td><td class="textmode">453.04</td><td class="textmode">50.34</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">13521.20</td><td class="textmode">2433.80</td><td class="textmode">270.43</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">11906.81</td><td class="textmode">2143.19</td><td class="textmode">238.13</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">21379.69</td><td class="textmode">3848.31</td><td class="textmode">427.60</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">75861.46</td><td class="textmode">13655.04</td><td class="textmode">1517.23</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">4067.81</td><td class="textmode">732.19</td><td class="textmode">81.35</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">6016.96</td><td class="textmode">1083.04</td><td class="textmode">120.34</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">10203.41</td><td class="textmode">1836.59</td><td class="textmode">204.07</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202501</td><td class="textmode">7745.79</td><td class="textmode">1394.21</td><td class="textmode">154.92</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">22922.08</td><td class="textmode">4125.92</td><td class="textmode">458.44</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">17194.96</td><td class="textmode">3095.04</td><td class="textmode">343.89</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">4055.12</td><td class="textmode">729.88</td><td class="textmode">81.10</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">14724.58</td><td class="textmode">2650.40</td><td class="textmode">294.50</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">7194.94</td><td class="textmode">1295.06</td><td class="textmode">143.90</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">27690.73</td><td class="textmode">4984.27</td><td class="textmode">553.82</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">16641.21</td><td class="textmode">2995.39</td><td class="textmode">332.82</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">1588.99</td><td class="textmode">286.01</td><td class="textmode">31.78</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">3220.36</td><td class="textmode">579.64</td><td class="textmode">64.41</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">4237.31</td><td class="textmode">762.69</td><td class="textmode">84.74</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">1483.06</td><td class="textmode">266.94</td><td class="textmode">29.66</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">16275.49</td><td class="textmode">2929.51</td><td class="textmode">325.51</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">14051.33</td><td class="textmode">2529.22</td><td class="textmode">281.03</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">2711.87</td><td class="textmode">488.13</td><td class="textmode">54.24</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">1016.95</td><td class="textmode">183.05</td><td class="textmode">20.34</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">11279.69</td><td class="textmode">2030.31</td><td class="textmode">225.60</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">1411.03</td><td class="textmode">253.97</td><td class="textmode">28.23</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">6737.31</td><td class="textmode">1212.69</td><td class="textmode">134.74</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">17533.92</td><td class="textmode">3156.08</td><td class="textmode">350.68</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">2618.65</td><td class="textmode">471.35</td><td class="textmode">52.37</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">15190.73</td><td class="textmode">2734.29</td><td class="textmode">303.82</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">9317.80</td><td class="textmode">1677.19</td><td class="textmode">186.36</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202502</td><td class="textmode">9262.73</td><td class="textmode">1667.27</td><td class="textmode">185.25</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">1525.43</td><td class="textmode">274.57</td><td class="textmode">30.51</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">7754.25</td><td class="textmode">1395.75</td><td class="textmode">155.08</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">5288.16</td><td class="textmode">951.84</td><td class="textmode">105.77</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">18453.41</td><td class="textmode">3321.59</td><td class="textmode">369.07</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">29005.19</td><td class="textmode">5220.91</td><td class="textmode">580.10</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">10322.05</td><td class="textmode">1857.95</td><td class="textmode">206.44</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">9084.76</td><td class="textmode">1635.24</td><td class="textmode">181.70</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">4144.07</td><td class="textmode">745.92</td><td class="textmode">82.88</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">12682.39</td><td class="textmode">2282.80</td><td class="textmode">253.65</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">5652.55</td><td class="textmode">1017.45</td><td class="textmode">113.05</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">10754.27</td><td class="textmode">1935.73</td><td class="textmode">215.09</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">8622.90</td><td class="textmode">1552.10</td><td class="textmode">172.46</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">7762.72</td><td class="textmode">1397.28</td><td class="textmode">155.26</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">21555.11</td><td class="textmode">3879.89</td><td class="textmode">431.10</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">28207.66</td><td class="textmode">5077.36</td><td class="textmode">564.15</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">8144.07</td><td class="textmode">1465.91</td><td class="textmode">162.88</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">5110.20</td><td class="textmode">919.80</td><td class="textmode">102.21</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">37932.24</td><td class="textmode">6827.74</td><td class="textmode">758.64</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">10512.73</td><td class="textmode">1892.27</td><td class="textmode">210.25</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">27148.42</td><td class="textmode">4886.68</td><td class="textmode">542.97</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">3089</td><td class="textmode">556</td><td class="textmode">61.78</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">15000.03</td><td class="textmode">2699.97</td><td class="textmode">300</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202503</td><td class="textmode">5508.49</td><td class="textmode">991.51</td><td class="textmode">110.17</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">2745.77</td><td class="textmode">494.23</td><td class="textmode">54.91</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">2970.36</td><td class="textmode">534.65</td><td class="textmode">59.40</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">1101.70</td><td class="textmode">198.30</td><td class="textmode">22.03</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">16847.48</td><td class="textmode">3032.52</td><td class="textmode">336.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">3050.85</td><td class="textmode">549.15</td><td class="textmode">61.02</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">4322.04</td><td class="textmode">777.96</td><td class="textmode">86.44</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">12822.04</td><td class="textmode">2307.94</td><td class="textmode">256.44</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">6949.17</td><td class="textmode">1250.83</td><td class="textmode">138.98</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">25279.68</td><td class="textmode">4550.32</td><td class="textmode">505.60</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">24039.86</td><td class="textmode">4327.14</td><td class="textmode">480.80</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">3580.52</td><td class="textmode">644.48</td><td class="textmode">71.61</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">6122.90</td><td class="textmode">1102.10</td><td class="textmode">122.46</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">3389.84</td><td class="textmode">610.16</td><td class="textmode">67.80</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">5186.45</td><td class="textmode">933.54</td><td class="textmode">103.72</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">39254.31</td><td class="textmode">7065.75</td><td class="textmode">785.08</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">2398.32</td><td class="textmode">431.68</td><td class="textmode">47.97</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">16919.53</td><td class="textmode">3045.46</td><td class="textmode">338.40</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">1838.99</td><td class="textmode">331.01</td><td class="textmode">36.78</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">12008.97</td><td class="textmode">2161.58</td><td class="textmode">240.17</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">19754.24</td><td class="textmode">3555.76</td><td class="textmode">395.08</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">22105.93</td><td class="textmode">3979.05</td><td class="textmode">442.12</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">27199.17</td><td class="textmode">4895.83</td><td class="textmode">543.98</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202504</td><td class="textmode">1186.45</td><td class="textmode">213.55</td><td class="textmode">23.73</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">17911.05</td><td class="textmode">3223.97</td><td class="textmode">358.22</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">45271.29</td><td class="textmode">8148.71</td><td class="textmode">905.42</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">12059.33</td><td class="textmode">2170.66</td><td class="textmode">241.19</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">5042.38</td><td class="textmode">907.62</td><td class="textmode">100.85</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">3601.70</td><td class="textmode">648.30</td><td class="textmode">72.04</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">3144.08</td><td class="textmode">565.92</td><td class="textmode">62.89</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">23025.45</td><td class="textmode">4144.55</td><td class="textmode">460.51</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">9669.52</td><td class="textmode">1740.49</td><td class="textmode">193.39</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">1779.67</td><td class="textmode">320.33</td><td class="textmode">35.59</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">13639.85</td><td class="textmode">2455.15</td><td class="textmode">272.80</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">45088.14</td><td class="textmode">8115.83</td><td class="textmode">901.77</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">5411.03</td><td class="textmode">973.97</td><td class="textmode">108.23</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">15597.48</td><td class="textmode">2807.52</td><td class="textmode">311.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">31919.56</td><td class="textmode">5745.44</td><td class="textmode">638.39</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101043598</td><td class="textmode">SCOTIABANK REPUBLICA DOMINICANA SA BANCO MULTIPLE</td><td class="textmode">202505</td><td class="textmode">67600</td><td class="textmode">10311.86</td><td class="textmode">1145.76</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101043598</td><td class="textmode">SCOTIABANK REPUBLICA DOMINICANA SA BANCO MULTIPLE</td><td class="textmode">202505</td><td class="textmode">50000</td><td class="textmode">7627.11</td><td class="textmode">847.46</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">6995.79</td><td class="textmode">1259.21</td><td class="textmode">139.92</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">12203.39</td><td class="textmode">2196.60</td><td class="textmode">244.07</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">1779.67</td><td class="textmode">320.33</td><td class="textmode">35.59</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">45422.91</td><td class="textmode">8176.09</td><td class="textmode">908.46</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">117220.37</td><td class="textmode">21099.63</td><td class="textmode">2344.41</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">8135.61</td><td class="textmode">1464.39</td><td class="textmode">162.72</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">5567.82</td><td class="textmode">1002.18</td><td class="textmode">111.36</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">38703.40</td><td class="textmode">6966.59</td><td class="textmode">774.07</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">2368.66</td><td class="textmode">426.34</td><td class="textmode">47.37</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">13025.44</td><td class="textmode">2344.56</td><td class="textmode">260.51</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">28076.28</td><td class="textmode">5053.72</td><td class="textmode">561.52</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202505</td><td class="textmode">1652.55</td><td class="textmode">297.45</td><td class="textmode">33.05</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">18347.47</td><td class="textmode">3302.52</td><td class="textmode">366.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">1080.52</td><td class="textmode">194.48</td><td class="textmode">21.61</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">5940.70</td><td class="textmode">1069.30</td><td class="textmode">118.82</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">35686.47</td><td class="textmode">6423.53</td><td class="textmode">713.73</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">44843.29</td><td class="textmode">8071.71</td><td class="textmode">896.87</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">14004.24</td><td class="textmode">2520.75</td><td class="textmode">280.08</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">14491.53</td><td class="textmode">2608.47</td><td class="textmode">289.83</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">11415.27</td><td class="textmode">2054.73</td><td class="textmode">228.30</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">7495.78</td><td class="textmode">1349.21</td><td class="textmode">149.92</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">1694.93</td><td class="textmode">305.07</td><td class="textmode">33.90</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">22419.52</td><td class="textmode">4035.48</td><td class="textmode">448.39</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">5042.39</td><td class="textmode">907.61</td><td class="textmode">100.86</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">3259.33</td><td class="textmode">586.67</td><td class="textmode">65.19</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">5635.60</td><td class="textmode">1014.40</td><td class="textmode">112.72</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">9144.10</td><td class="textmode">1645.90</td><td class="textmode">182.88</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">19097.47</td><td class="textmode">3437.52</td><td class="textmode">381.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">13834.77</td><td class="textmode">2490.23</td><td class="textmode">276.69</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">33292.40</td><td class="textmode">5992.59</td><td class="textmode">665.85</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">14601.99</td><td class="textmode">2628.34</td><td class="textmode">292.04</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">5114.42</td><td class="textmode">920.57</td><td class="textmode">102.28</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">10580.52</td><td class="textmode">1904.48</td><td class="textmode">211.61</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">8072.05</td><td class="textmode">1452.95</td><td class="textmode">161.44</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">7491.55</td><td class="textmode">1348.45</td><td class="textmode">149.83</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202506</td><td class="textmode">2097.47</td><td class="textmode">377.53</td><td class="textmode">41.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">4364.41</td><td class="textmode">785.59</td><td class="textmode">87.29</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">17877.14</td><td class="textmode">3217.86</td><td class="textmode">357.54</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">10169.52</td><td class="textmode">1830.48</td><td class="textmode">203.38</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">2542.38</td><td class="textmode">457.62</td><td class="textmode">50.85</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">3805.10</td><td class="textmode">684.90</td><td class="textmode">76.09</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">8601.71</td><td class="textmode">1548.29</td><td class="textmode">172.04</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">14521.21</td><td class="textmode">2613.79</td><td class="textmode">290.42</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">6652.56</td><td class="textmode">1197.44</td><td class="textmode">133.05</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">27309.41</td><td class="textmode">4915.68</td><td class="textmode">546.19</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">7714.42</td><td class="textmode">1388.58</td><td class="textmode">154.29</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">18550.86</td><td class="textmode">3339.14</td><td class="textmode">371.02</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">9110.18</td><td class="textmode">1639.82</td><td class="textmode">182.21</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">12932.21</td><td class="textmode">2327.79</td><td class="textmode">258.64</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">13563.58</td><td class="textmode">2441.42</td><td class="textmode">271.27</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">3177.97</td><td class="textmode">572.03</td><td class="textmode">63.56</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">2966.11</td><td class="textmode">533.89</td><td class="textmode">59.32</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">5008.49</td><td class="textmode">901.51</td><td class="textmode">100.17</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">2372.89</td><td class="textmode">427.11</td><td class="textmode">47.46</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">4635.61</td><td class="textmode">834.39</td><td class="textmode">92.71</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">3432.21</td><td class="textmode">617.79</td><td class="textmode">68.64</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">15712.84</td><td class="textmode">2828.27</td><td class="textmode">314.26</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">9275.43</td><td class="textmode">1669.57</td><td class="textmode">185.50</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">8055.10</td><td class="textmode">1449.90</td><td class="textmode">161.10</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">6707.64</td><td class="textmode">1207.36</td><td class="textmode">134.15</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">5940.71</td><td class="textmode">1069.29</td><td class="textmode">118.81</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202507</td><td class="textmode">8635.61</td><td class="textmode">1554.39</td><td class="textmode">172.71</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">8381.36</td><td class="textmode">1508.64</td><td class="textmode">167.62</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">3588.99</td><td class="textmode">646.01</td><td class="textmode">71.78</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">11406.79</td><td class="textmode">2053.21</td><td class="textmode">228.14</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">5708.12</td><td class="textmode">1027.43</td><td class="textmode">114.16</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">2618.65</td><td class="textmode">471.35</td><td class="textmode">52.37</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">1271.19</td><td class="textmode">228.81</td><td class="textmode">25.42</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">3601.72</td><td class="textmode">648.28</td><td class="textmode">72.03</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">3834.75</td><td class="textmode">690.24</td><td class="textmode">76.70</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">4974.58</td><td class="textmode">895.42</td><td class="textmode">99.49</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">20741.54</td><td class="textmode">3733.46</td><td class="textmode">414.83</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">6474.60</td><td class="textmode">1165.40</td><td class="textmode">129.49</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">13635.61</td><td class="textmode">2454.39</td><td class="textmode">272.70</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">3050.85</td><td class="textmode">549.15</td><td class="textmode">61.02</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">29440.70</td><td class="textmode">5299.31</td><td class="textmode">588.81</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">334.75</td><td class="textmode">60.25</td><td class="textmode">6.70</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">4894.09</td><td class="textmode">880.91</td><td class="textmode">97.88</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">5627.13</td><td class="textmode">1012.87</td><td class="textmode">112.54</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">43894.10</td><td class="textmode">7900.89</td><td class="textmode">877.89</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">4228.83</td><td class="textmode">761.17</td><td class="textmode">84.58</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">8.47</td><td class="textmode">1.52</td><td class="textmode">0.17</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">4766.95</td><td class="textmode">858.05</td><td class="textmode">95.34</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">11669.51</td><td class="textmode">2100.49</td><td class="textmode">233.39</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">11042.40</td><td class="textmode">1987.60</td><td class="textmode">220.85</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">2449.16</td><td class="textmode">440.84</td><td class="textmode">48.99</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202508</td><td class="textmode">25389.87</td><td class="textmode">4570.14</td><td class="textmode">507.79</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">11644.09</td><td class="textmode">2095.91</td><td class="textmode">232.88</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">7313.58</td><td class="textmode">1316.42</td><td class="textmode">146.27</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">5118.65</td><td class="textmode">921.35</td><td class="textmode">102.38</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">3242.08</td><td class="textmode">583.56</td><td class="textmode">64.84</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">14118.66</td><td class="textmode">2541.34</td><td class="textmode">282.37</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">8576.29</td><td class="textmode">1543.71</td><td class="textmode">171.53</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">8389.85</td><td class="textmode">1510.15</td><td class="textmode">167.79</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">1224.58</td><td class="textmode">220.42</td><td class="textmode">24.49</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">17216.14</td><td class="textmode">3098.86</td><td class="textmode">344.32</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">1271.19</td><td class="textmode">228.81</td><td class="textmode">25.42</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">25313.57</td><td class="textmode">4556.43</td><td class="textmode">506.27</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">508.48</td><td class="textmode">91.52</td><td class="textmode">10.17</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">3466.11</td><td class="textmode">623.89</td><td class="textmode">69.32</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">9944.94</td><td class="textmode">1790.06</td><td class="textmode">198.91</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">4733.06</td><td class="textmode">851.94</td><td class="textmode">94.66</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">4122.90</td><td class="textmode">742.10</td><td class="textmode">82.46</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">2855.94</td><td class="textmode">514.06</td><td class="textmode">57.12</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">2288.16</td><td class="textmode">411.84</td><td class="textmode">45.76</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">3580.51</td><td class="textmode">644.49</td><td class="textmode">71.61</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">8334.76</td><td class="textmode">1500.24</td><td class="textmode">166.70</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">10792.40</td><td class="textmode">1942.60</td><td class="textmode">215.84</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">2457.63</td><td class="textmode">442.37</td><td class="textmode">49.15</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">12953.39</td><td class="textmode">2331.60</td><td class="textmode">259.07</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">3169.51</td><td class="textmode">570.49</td><td class="textmode">63.39</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202509</td><td class="textmode">19534.67</td><td class="textmode">3516.23</td><td class="textmode">390.69</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101043598</td><td class="textmode">SCOTIABANK REPUBLICA DOMINICANA SA BANCO MULTIPLE</td><td class="textmode">202510</td><td class="textmode">2725</td><td class="textmode">415.67</td><td class="textmode">46.19</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">2789.84</td><td class="textmode">502.16</td><td class="textmode">55.80</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">26161.05</td><td class="textmode">4708.97</td><td class="textmode">523.22</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">36686.45</td><td class="textmode">6603.55</td><td class="textmode">733.73</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">18559.35</td><td class="textmode">3340.65</td><td class="textmode">371.18</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">6597.49</td><td class="textmode">1187.51</td><td class="textmode">131.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">8538.16</td><td class="textmode">1536.84</td><td class="textmode">170.76</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">6398.33</td><td class="textmode">1151.67</td><td class="textmode">127.97</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">5118.66</td><td class="textmode">921.34</td><td class="textmode">102.37</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">4355.94</td><td class="textmode">784.06</td><td class="textmode">87.12</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">2466.12</td><td class="textmode">443.88</td><td class="textmode">49.32</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">2655.10</td><td class="textmode">477.90</td><td class="textmode">53.10</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">2966.11</td><td class="textmode">533.89</td><td class="textmode">59.32</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">1008.48</td><td class="textmode">181.52</td><td class="textmode">20.17</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">9813.57</td><td class="textmode">1766.43</td><td class="textmode">196.27</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">2203.40</td><td class="textmode">396.60</td><td class="textmode">44.06</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">5156.79</td><td class="textmode">928.21</td><td class="textmode">103.13</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">5669.51</td><td class="textmode">1020.49</td><td class="textmode">113.39</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">8262.72</td><td class="textmode">1487.28</td><td class="textmode">165.25</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">20932.21</td><td class="textmode">3767.79</td><td class="textmode">418.64</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">16283.91</td><td class="textmode">2931.09</td><td class="textmode">325.67</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">4449.16</td><td class="textmode">800.84</td><td class="textmode">88.98</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202510</td><td class="textmode">12656.80</td><td class="textmode">2278.20</td><td class="textmode">253.14</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">8135.61</td><td class="textmode">1464.39</td><td class="textmode">162.71</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">16758.48</td><td class="textmode">3016.52</td><td class="textmode">335.17</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">21567.82</td><td class="textmode">3882.18</td><td class="textmode">431.35</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">39830.52</td><td class="textmode">7169.48</td><td class="textmode">796.61</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">6152.55</td><td class="textmode">1107.44</td><td class="textmode">123.05</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">38203.52</td><td class="textmode">6876.63</td><td class="textmode">764.07</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">61958.88</td><td class="textmode">11152.56</td><td class="textmode">1239.19</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">5487.33</td><td class="textmode">987.67</td><td class="textmode">109.75</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">9771.19</td><td class="textmode">1758.80</td><td class="textmode">195.43</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">21097.46</td><td class="textmode">3797.53</td><td class="textmode">421.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">165.26</td><td class="textmode">29.74</td><td class="textmode">3.31</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">15682.23</td><td class="textmode">2822.77</td><td class="textmode">313.65</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">9978.84</td><td class="textmode">1796.16</td><td class="textmode">199.58</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">9025.45</td><td class="textmode">1624.56</td><td class="textmode">180.51</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">9097.49</td><td class="textmode">1637.51</td><td class="textmode">181.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">1419.50</td><td class="textmode">255.50</td><td class="textmode">28.39</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">17309.36</td><td class="textmode">3115.64</td><td class="textmode">346.19</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">4449.17</td><td class="textmode">800.83</td><td class="textmode">88.98</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">6987.28</td><td class="textmode">1257.71</td><td class="textmode">139.75</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202511</td><td class="textmode">13998.34</td><td class="textmode">2519.66</td><td class="textmode">279.97</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">5118.66</td><td class="textmode">921.34</td><td class="textmode">102.37</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">1567.81</td><td class="textmode">282.19</td><td class="textmode">31.36</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">18237.35</td><td class="textmode">3282.65</td><td class="textmode">364.76</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">33017.83</td><td class="textmode">5943.18</td><td class="textmode">660.36</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">20983.08</td><td class="textmode">3776.93</td><td class="textmode">419.66</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">9207.65</td><td class="textmode">1657.35</td><td class="textmode">184.15</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">11338.91</td><td class="textmode">2040.97</td><td class="textmode">226.78</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">14516.99</td><td class="textmode">2613.01</td><td class="textmode">290.34</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">2627.13</td><td class="textmode">472.87</td><td class="textmode">52.54</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">5693.25</td><td class="textmode">1024.76</td><td class="textmode">113.87</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">39122.91</td><td class="textmode">7042.11</td><td class="textmode">782.45</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">15947.49</td><td class="textmode">2870.52</td><td class="textmode">318.95</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">12906.82</td><td class="textmode">2323.18</td><td class="textmode">258.13</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">2216.11</td><td class="textmode">398.89</td><td class="textmode">44.32</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">15936.46</td><td class="textmode">2868.54</td><td class="textmode">318.72</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">27432.27</td><td class="textmode">4937.73</td><td class="textmode">548.64</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">381.36</td><td class="textmode">68.64</td><td class="textmode">7.63</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">6118.67</td><td class="textmode">1101.33</td><td class="textmode">122.37</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">6470.36</td><td class="textmode">1164.64</td><td class="textmode">129.41</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">17750.03</td><td class="textmode">3194.97</td><td class="textmode">355</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">5500.01</td><td class="textmode">989.99</td><td class="textmode">110</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">8216.12</td><td class="textmode">1478.88</td><td class="textmode">164.32</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">2076.28</td><td class="textmode">373.72</td><td class="textmode">41.53</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">15928.83</td><td class="textmode">2867.17</td><td class="textmode">318.58</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">7533.78</td><td class="textmode">1356.07</td><td class="textmode">150.67</td><td class="textmode">0</td>
+		</tr><tr>
+			<td class="textmode">101654325</td><td class="textmode">CONSORCIO DE TARJETAS DOMINICANAS S A</td><td class="textmode">202512</td><td class="textmode">37411.05</td><td class="textmode">6733.96</td><td class="textmode">748.22</td><td class="textmode">0</td>
+		</tr>
+	</table>
+</div>

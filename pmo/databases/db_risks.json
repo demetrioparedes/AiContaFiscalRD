@@ -1,0 +1,13 @@
+{
+  "parent": { "type": "page_id", "page_id": "3324332f-8b18-805c-b67e-d93abed9cd91" },
+  "title": [{ "type": "text", "text": { "content": "⚠️ Matriz de Riesgos" } }],
+  "properties": {
+    "Riesgo": { "title": {} },
+    "Probabilidad": { "select": { "options": [
+      { "name": "Alta", "color": "red" },
+      { "name": "Media", "color": "yellow" },
+      { "name": "Baja", "color": "green" }
+    ] } },
+    "Estado de Mitigación": { "status": {} }
+  }
+}

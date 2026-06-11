@@ -19,7 +19,7 @@ from typing import List, Optional
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
-from database import SessionLocal, UserProfile
+from database import SessionLocal, AiContaUserProfile
 
 # Scheme para extraer el Bearer token del header
 security = HTTPBearer(auto_error=False)
@@ -110,7 +110,7 @@ def obtener_usuario(
             detail="Token inválido: no contiene subject (sub)."
         )
 
-    perfil = db.query(UserProfile).filter_by(auth_user_id=auth_user_id).first()
+    perfil = db.query(AiContaUserProfile).filter_by(auth_user_id=auth_user_id).first()
     if not perfil:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

@@ -19,7 +19,7 @@ sys.path.insert(0, BASE_DIR)
 
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
-from core.database import init_db, SessionLocal, Empresa, ValidacionFiscal, PadronDGII, EstadoFinanciero, get_db, UserProfile
+from core.database import init_db, SessionLocal, Empresa, ValidacionFiscal, PadronDGII, EstadoFinanciero, get_db, AiContaAiContaUserProfile
 from core.ai_plantillas import generar_mensaje_cruce, generar_resumen_isr, necesita_ia
 from core.ai_conector import consultar_ia, construir_contexto_fiscal, PROVEEDOR_CHAT
 from core.run_pipeline import registrar_cliente
@@ -130,10 +130,10 @@ async def login(data: LoginRequest, db: Session = Depends(get_db)):
             auth_user_id = auth_data["user"]["id"]
 
             # Buscar o crear perfil
-            perfil = db.query(UserProfile).filter_by(auth_user_id=auth_user_id).first()
+            perfil = db.query(AiContaUserProfile).filter_by(auth_user_id=auth_user_id).first()
             if not perfil:
                 # Auto-registro: crear perfil básico (role=cliente por defecto)
-                perfil = UserProfile(
+                perfil = AiContaUserProfile(
                     auth_user_id=auth_user_id,
                     email=data.email,
                     nombre=auth_data["user"].get("user_metadata", {}).get("full_name", data.email.split("@")[0]),

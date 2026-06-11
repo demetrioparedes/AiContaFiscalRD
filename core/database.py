@@ -384,14 +384,14 @@ Index('idx_socios_madre', Socio.entidad_madre_id)
 
 
 # ==========================================
-# 12. USER PROFILE (Auth Multi-Contador)
+# 12. USER PROFILE (Auth Multi-Contador) — AiContaFiscalRD
 # ==========================================
-class UserProfile(Base):
+class AiContaUserProfile(Base):
     """
-    Perfil de usuario vinculado a Supabase Auth.
-    Controla qué empresas/contadores puede ver cada usuario.
+    Perfil de usuario vinculado a Supabase Auth para AiContaFiscalRD.
+    Usa tabla aislada 'aiconta_user_profile' para no interferir con FrancisGas.
     """
-    __tablename__ = "user_profile"
+    __tablename__ = "aiconta_user_profile"
     id = Column(Integer, primary_key=True)
     auth_user_id = Column(String(255), unique=True, nullable=False, index=True)
     email = Column(String(255), unique=True, nullable=False)
@@ -403,8 +403,8 @@ class UserProfile(Base):
     creado = Column(DateTime, default=func.now())
     ultimo_acceso = Column(DateTime, nullable=True)
 
-Index('idx_user_profile_auth', UserProfile.auth_user_id)
-Index('idx_user_profile_email', UserProfile.email)
+Index('idx_aiconta_profile_auth', AiContaUserProfile.auth_user_id)
+Index('idx_aiconta_profile_email', AiContaUserProfile.email)
 
 
 # ==========================================

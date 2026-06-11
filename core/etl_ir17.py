@@ -11,6 +11,10 @@ from database import SessionLocal, Empresa, Dgii606, DgiiIr17
 from sqlalchemy import func, and_
 from decimal import Decimal, ROUND_HALF_UP
 
+def _d(valor):
+    """Convierte a Decimal(0.00) si es None."""
+    return valor if valor is not None else Decimal("0.00")
+
 def procesar_ir17_mensual(db, rnc_empresa: str, anio: int):
     """
     Genera el IR-17 para todos los meses del año fiscal basándose en el 606.
@@ -51,7 +55,14 @@ def procesar_ir17_mensual(db, rnc_empresa: str, anio: int):
                  Dgii606.isr_retenido > 0)
         ).all()
         
-        ir17 = DgiiIr17(empresa_id=emp_id, periodo=periodo)
+        ir17 = DgiiIr17(
+            empresa_id=emp_id, periodo=periodo,
+            alquileres=Decimal("0.00"), honorarios=Decimal("0.00"),
+            servicios_tecnicos=Decimal("0.00"), otros_pagos=Decimal("0.00"),
+            dividendos=Decimal("0.00"), total_is_retenido=Decimal("0.00"),
+            itbis_retenido_terceros=Decimal("0.00"), total_a_pagar=Decimal("0.00"),
+            retribuciones_complementarias=Decimal("0.00"),
+        )
         itbis_total_retenido = Decimal("0.00")
         
         for reg in registros_606:
@@ -78,12 +89,14 @@ def procesar_ir17_mensual(db, rnc_empresa: str, anio: int):
         # ITBIS Retenido total
         ir17.itbis_retenido_terceros = itbis_total_retenido
         
-        # Totales
+        # Totales (con proteccion None -> Decimal 0)
         ir17.total_is_retenido = (
-            ir17.alquileres + ir17.honorarios + ir17.servicios_tecnicos + 
-            ir17.otros_pagos + ir17.dividendos
+            _d(ir17.alquileres) + _d(ir17.honorarios) + _d(ir17.servicios_tecnicos) +
+            _d(ir17.otros_pagos) + _d(ir17.dividendos)
         )
-        ir17.total_a_pagar = ir17.total_is_retenido + ir17.itbis_retenido_terceros + ir17.retribuciones_complementarias
+        ir17.total_a_pagar = (
+            ir17.total_is_retenido + _d(ir17.itbis_retenido_terceros) + _d(ir17.retribuciones_complementarias)
+        )
         
         db.add(ir17)
         print(f"  [+] IR-17 Generado para {periodo}: Total a Pagar RD$ {ir17.total_a_pagar:,.2f}")

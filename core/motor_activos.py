@@ -51,10 +51,11 @@ class MotorActivosFijos:
         for activo in activos:
             # 1. Determinar Categoría y Tasa
             cat = str(activo.categoria).upper()
-            if "EDIFIC" in cat or "MEJORA" in cat or "INMUEBLE" in cat:
+            cat_key = cat.replace(" ", "")
+            if cat_key in ("CAT1",) or any(k in cat for k in ("EDIFIC", "MEJORA", "INMUEBLE")):
                 tasa = self.TASAS["CAT1"]
                 categoria_real = "CAT1"
-            elif "VEHIC" in cat or "COMPU" in cat or "MOBILI" in cat or "OFICINA" in cat:
+            elif cat_key in ("CAT2",) or any(k in cat for k in ("VEHIC", "COMPU", "MOBILI", "OFICINA")):
                 tasa = self.TASAS["CAT2"]
                 categoria_real = "CAT2"
             else:

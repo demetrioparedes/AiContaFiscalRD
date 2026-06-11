@@ -1,5 +1,7 @@
 import sys, os
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 
 from database import SessionLocal, Base, Empresa, Dgii606, DgiiIr17
 from etl_ir17 import procesar_ir17_mensual

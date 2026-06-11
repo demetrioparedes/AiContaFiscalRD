@@ -3,8 +3,13 @@ seed_maestras.py
 Pobla las tablas maestras del sistema con las reglas normativas.
 Solo se ejecuta una vez (o cuando se actualicen las reglas fiscales de la DGII).
 """
-import sys
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+import sys, os
+
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 from database import SessionLocal, ClasificacionFiscal, CorrespondenciaIr2
 
 def seed_clasificacion(db):

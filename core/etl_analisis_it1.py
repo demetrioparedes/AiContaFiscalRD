@@ -10,8 +10,12 @@ Este archivo tiene dos fuentes de datos críticas:
 
 Es universal: funciona para CUALQUIER cliente que tenga el mismo formato de análisis.
 """
-import sys
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+import sys, os
+
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 
 import xlrd
 import re
@@ -229,8 +233,9 @@ def procesar_analisis(ruta_archivo, rnc_empresa, anio):
 
 
 if __name__ == "__main__":
+    # Test con cliente de ejemplo
     procesar_analisis(
-        ruta_archivo=r"G:\Mi unidad\Backup NAS (NO TOCAR)\PGA\13 DECLARACION IR-2 2025\IR-2 2025 ELVIRA\ANALISIS 2025.xls",
+        ruta_archivo=os.path.join(BASE_DIR, "data", "clientes", "130826552", "03_Estados_Financieros", "ANALISIS 2025.xls"),
         rnc_empresa="130826552",
         anio=2025
     )

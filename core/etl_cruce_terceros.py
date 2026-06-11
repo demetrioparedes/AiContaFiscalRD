@@ -11,13 +11,16 @@ Cruces que genera el sistema:
   - Top clientes del cruce -> verifica CxC
 """
 import sys, os, glob
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
 
 import pandas as pd
+
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 from database import SessionLocal
 from sqlalchemy import and_
-
-BASE_ELVIRA = r"G:\Mi unidad\Backup NAS (NO TOCAR)\PGA\13 DECLARACION IR-2 2025\IR-2 2025 ELVIRA"
 
 def cargar_cruce_606(directorio):
     """Carga el archivo de ingresos según terceros (cruce 606)."""
@@ -109,9 +112,10 @@ def procesar_cruce_terceros(directorio, rnc_empresa, anio, ventas_declaradas):
 
 
 if __name__ == "__main__":
+    # Test rápido con cliente de ejemplo
     procesar_cruce_terceros(
-        directorio=BASE_ELVIRA,
+        directorio=os.path.join(BASE_DIR, "data", "clientes", "130826552"),
         rnc_empresa="130826552",
         anio=2025,
-        ventas_declaradas=16355367.70  # Total IT-1 real de Elvira
+        ventas_declaradas=16355367.70
     )

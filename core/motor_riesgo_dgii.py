@@ -31,7 +31,11 @@ CRITERIOS DE RIESGO (basados en práctica auditorial dominicana):
     E2: Comercios con alta proporción de ventas en efectivo  → Riesgo MEDIO
 """
 import sys, os
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 
 from database import SessionLocal, Empresa, EstadoFinanciero, ValidacionFiscal, TssNomina, Ir18Retenciones, Dgii606, Dgii607
 from sqlalchemy import func, and_

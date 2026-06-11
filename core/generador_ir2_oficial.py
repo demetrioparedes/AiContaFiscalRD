@@ -72,13 +72,10 @@ def generar_ir2_oficial(rnc: str, anio: int, db: Session = None):
 
         # 2. Clonación
         if not os.path.exists(TEMPLATE_XLS):
-            # Fallback a la ruta de descarga si la normalizada no existe (para desarrollo)
-            # Pero en producción DEBE estar en templates/
-            alt_path = r"C:\Users\pgaco\Downloads\IR-2-2018\IR-2-2018\IR-2-2018.xls"
-            if os.path.exists(alt_path):
-                shutil.copy(alt_path, TEMPLATE_XLS)
-            else:
-                raise FileNotFoundError(f"Plantilla no encontrada en {TEMPLATE_XLS}")
+            raise FileNotFoundError(
+                f"Plantilla no encontrada en {TEMPLATE_XLS}. "
+                f"Copia la plantilla oficial 'IR-2-2018.xls' de la DGII a 'templates/'"
+            )
 
         rb = xlrd.open_workbook(TEMPLATE_XLS, formatting_info=True)
         wb = xl_copy(rb)

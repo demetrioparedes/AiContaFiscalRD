@@ -17,7 +17,11 @@ Datos disponibles en el archivo actual de Elvira:
 El sistema procesa lo disponible y genera alertas sobre lo que falta.
 """
 import sys, os
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 
 import xlrd
 from database import SessionLocal, TssNomina, Ir18Retenciones, Empresa
@@ -250,7 +254,7 @@ def procesar_tss_ir13(ruta_archivo, rnc_empresa, anio):
 
 if __name__ == "__main__":
     procesar_tss_ir13(
-        ruta_archivo=r"G:\Mi unidad\Backup NAS (NO TOCAR)\PGA\13 DECLARACION IR-2 2025\IR-2 2025 ELVIRA\IR-13 y TSS 2025.xls",
+        ruta_archivo=os.path.join(BASE_DIR, "data", "clientes", "130826552", "02_Nominas_TSS", "IR-13 y TSS 2025.xls"),
         rnc_empresa="130826552",
         anio=2025
     )

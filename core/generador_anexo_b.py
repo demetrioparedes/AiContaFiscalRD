@@ -18,7 +18,11 @@ Categorías Oficiales del Anexo B-1 (DGII):
   B11 - Gastos de Seguros
 """
 import sys, os
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 
 from database import SessionLocal, Empresa, Dgii606
 from sqlalchemy import func, and_

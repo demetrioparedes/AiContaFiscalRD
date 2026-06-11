@@ -5,7 +5,11 @@ Genera un archivo Excel formateado con las retenciones mensuales,
 incluyendo gráficos de tendencia y formato condicional profesional.
 """
 import sys, os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 
 import pandas as pd
 from database import SessionLocal, Empresa, DgiiIr17
@@ -13,7 +17,7 @@ from openpyxl import Workbook
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 from openpyxl.chart import BarChart, Reference
 
-OUTPUT_DIR = r"c:\GEMINI\AiContaFiscalRD\data\output"
+OUTPUT_DIR = os.path.join(BASE_DIR, "data", "output")
 
 def generar_reporte_visual_ir17(rnc: str, anio: int):
     print(f"\n[Visual] Generando Reporte Excel IR-17 para RNC {rnc}...")

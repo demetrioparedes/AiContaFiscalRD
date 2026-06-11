@@ -1,0 +1,20 @@
+# AiContaFiscalRD — Render.com Deployment Config
+# ===============================================
+# Variables de entorno requeridas en Render Dashboard:
+#   API_SECRET_KEY: <tu-clave-secreta>
+#   DATABASE_URL: postgresql://user:pass@host:6543/postgres
+
+services:
+  - type: web
+    name: aicontafiscalrd-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: API_SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false

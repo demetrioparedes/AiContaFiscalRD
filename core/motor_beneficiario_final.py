@@ -2,7 +2,7 @@
 from typing import List, Dict, Any
 from decimal import Decimal
 from sqlalchemy.orm import Session
-from core.database import Socio, ValidacionFiscal
+from database import Socio, ValidacionFiscal
 from datetime import datetime
 
 class MotorBeneficiarioFinal:

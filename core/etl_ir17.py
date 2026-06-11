@@ -7,7 +7,7 @@ y las consolida en la tabla dgii_ir17.
 import sys, os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from core.database import SessionLocal, Empresa, Dgii606, DgiiIr17
+from database import SessionLocal, Empresa, Dgii606, DgiiIr17
 from sqlalchemy import func, and_
 from decimal import Decimal, ROUND_HALF_UP
 

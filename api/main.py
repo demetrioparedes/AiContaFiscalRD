@@ -32,6 +32,34 @@ import os
 from core.motor_riesgo_dgii import calcular_riesgo
 from core.generador_final import main as generar_final
 
+# ─── Task Store para BackgroundTasks ───────────────────────────
+import uuid
+import threading
+_tasks_lock = threading.Lock()
+_tasks: dict = {}
+
+def _create_task(task_type: str) -> str:
+    task_id = str(uuid.uuid4())[:8]
+    with _tasks_lock:
+        _tasks[task_id] = {
+            "id": task_id,
+            "type": task_type,
+            "status": "pending",
+            "progress": "",
+            "result": None,
+            "error": None,
+        }
+    return task_id
+
+def _update_task(task_id: str, **kwargs):
+    with _tasks_lock:
+        if task_id in _tasks:
+            _tasks[task_id].update(kwargs)
+
+def _get_task(task_id: str):
+    with _tasks_lock:
+        return _tasks.get(task_id)
+
 app = FastAPI(title="AiContaFiscalRD API")
 
 app.add_middleware(
@@ -61,7 +89,10 @@ API_KEY_NAME = "X-API-KEY"
 api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
 
 def verify_api_key(api_key: str = Depends(api_key_header)):
-    secret = os.getenv("API_SECRET_KEY", "AiConta_Secure_Key_2026_RD")
+    secret = os.getenv("API_SECRET_KEY")
+    if not secret:
+        logging.error("API_SECRET_KEY no configurada en .env — todas las requests serán rechazadas.")
+        raise HTTPException(status_code=500, detail="Error de configuración del servidor.")
     if api_key != secret:
         logging.warning(f"Intento de acceso no autorizado con API Key errónea.")
         raise HTTPException(status_code=403, detail="Acceso no autorizado: API Key inválida")
@@ -122,14 +153,23 @@ async def health_check(db: Session = Depends(get_db)):
     return health_status
 
 @app.get("/api/clientes", dependencies=[Depends(verify_api_key)])
-async def listar_clientes(db: Session = Depends(get_db)):
+async def listar_clientes(
+    page: int = 1,
+    per_page: int = 20,
+    db: Session = Depends(get_db)
+):
     try:
-        clientes = db.query(Empresa).all()
+        total = db.query(Empresa).count()
+        offset = (max(1, page) - 1) * per_page
+        clientes = db.query(Empresa).order_by(Empresa.id.desc()).offset(offset).limit(per_page).all()
         periodos = db.query(EstadoFinanciero).count()
         auditorias = db.query(ValidacionFiscal).count()
         return {
-            "total": len(clientes),
-            "clientes": [{"id": c.id, "rnc": c.rnc, "razon_social": c.nombre_empresa} for c in reversed(clientes)],
+            "total": total,
+            "page": page,
+            "per_page": per_page,
+            "pages": (total + per_page - 1) // per_page,
+            "clientes": [{"id": c.id, "rnc": c.rnc, "razon_social": c.nombre_empresa} for c in clientes],
             "stats": {"periodos": periodos, "auditorias": auditorias}
         }
     except Exception as e:
@@ -334,6 +374,7 @@ async def parse_ir2_anterior(files: List[UploadFile] = File(...)):
 
 @app.post("/api/procesar", dependencies=[Depends(verify_api_key)])
 async def procesar(
+    background_tasks: BackgroundTasks,
     rnc: str = Form(...),
     nombre: str = Form(...),
     anio: int = Form(...),
@@ -342,20 +383,19 @@ async def procesar(
     retenciones: float = Form(0.0),
     pendientes_list: str = Form(""),
     files: List[UploadFile] = File(None),
-    db: Session = Depends(get_db)
 ):
+    """Inicia el pipeline fiscal completo en segundo plano."""
+    task_id = _create_task("pipeline")
+
     rnc_limpio = rnc.replace("-", "")
     base_dir = os.path.join(BASE_DIR, "data", "clientes", rnc_limpio)
-    
-    # Garantizar que las carpetas base existan
     os.makedirs(base_dir, exist_ok=True)
-    for c in ["01_Formatos_606_607", "02_Nominas_TSS", "03_Estados_Financieros", "04_Declaraciones_Anteriores", "05_Auditoria_Logs", "06_Entregables_IR2_PDF"]:
+    for c in ["01_Formatos_606_607", "02_Nominas_TSS", "03_Estados_Financieros",
+              "04_Declaraciones_Anteriores", "05_Auditoria_Logs", "06_Entregables_IR2_PDF"]:
         os.makedirs(os.path.join(base_dir, c), exist_ok=True)
 
     it1_path = ""
     tss_path = ""
-    
-    # Guardar archivos en el Expediente Físico
     if files:
         for f in files:
             if f.filename:
@@ -368,51 +408,57 @@ async def procesar(
                     subcarpeta = "04_Declaraciones_Anteriores"
                 else:
                     subcarpeta = "01_Formatos_606_607"
-                
                 guardado_en = os.path.join(base_dir, subcarpeta, f.filename)
                 with open(guardado_en, "wb") as buffer:
                     shutil.copyfileobj(f.file, buffer)
-                
                 if "ANALISIS" in fname_upper and f.filename.endswith(('.xls', '.xlsx')):
                     it1_path = guardado_en
                 elif "TSS" in fname_upper and f.filename.endswith(('.xls', '.xlsx')):
                     tss_path = guardado_en
-            
-    # Config
+
     config = {
-        "rnc": rnc.replace("-", ""),
-        "nombre": nombre,
-        "anio": anio,
-        "regimen": "ordinario",
-        "inv_inicial": inv_inicial,
-        "inv_final": inv_final,
-        "activos": [],
-        "prestamos": [],
-        "retenciones": retenciones,
-        "directorio": base_dir,
-        "tss_path": tss_path,
-        "it1_path": it1_path,
+        "rnc": rnc_limpio, "nombre": nombre, "anio": anio,
+        "regimen": "ordinario", "inv_inicial": inv_inicial, "inv_final": inv_final,
+        "activos": [], "prestamos": [], "retenciones": retenciones,
+        "directorio": base_dir, "tss_path": tss_path, "it1_path": it1_path,
         "pendientes_list": pendientes_list.split(",") if pendientes_list else []
     }
-    
+
+    background_tasks.add_task(_ejecutar_pipeline, task_id, config)
+    return {"task_id": task_id, "status": "processing", "message": "Pipeline iniciado en segundo plano."}
+
+
+@app.get("/api/tasks/{task_id}", dependencies=[Depends(verify_api_key)])
+async def obtener_estado_task(task_id: str):
+    """Consulta el estado de un task de procesamiento."""
+    task = _get_task(task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task no encontrado")
+    return task
+
+
+def _ejecutar_pipeline(task_id: str, config: dict):
+    """Corre el pipeline completo en background."""
+    import traceback as tb_mod
+    db = SessionLocal()
     try:
+        _update_task(task_id, status="processing", progress="Registrando cliente...")
         init_db()
-        # PASO 1: Registrar cliente
         registrar_cliente(config, db)
         db.commit()
 
-        # PASO 2: ETL
+        _update_task(task_id, progress="Ingestando 606/607...")
         ejecutar_etl(config["directorio"], config["rnc"], config["anio"])
 
-        # PASO 3: ETL TSS
-        if tss_path:
-            procesar_tss_ir13(tss_path, config["rnc"], config["anio"])
+        if config.get("tss_path"):
+            _update_task(task_id, progress="Procesando TSS/IR-13...")
+            procesar_tss_ir13(config["tss_path"], config["rnc"], config["anio"])
 
-        # PASO 4: Motor Fiscal
+        _update_task(task_id, progress="Ejecutando auditoría fiscal...")
         orquestador = OrquestadorFiscal(db, config["rnc"], config["anio"])
         res_pipeline = orquestador.ejecutar_auditoria_fiscal_completa()
-        
-        # PASO 4.1: ETL Cruce Terceros
+
+        _update_task(task_id, progress="Calculando riesgo DGII...")
         cruce_terceros_data = None
         if os.path.exists(config["directorio"]):
             cruce_files = [f for f in os.listdir(config["directorio"]) if 'Terceros' in f]
@@ -420,61 +466,34 @@ async def procesar(
                 ventas_v = res_pipeline["ir2_data"]["ventas"] if res_pipeline["ir2_data"] else 0
                 cruce_terceros_data = procesar_cruce_terceros(config["directorio"], config["rnc"], config["anio"], ventas_v)
 
-        # Recuperar Semáforos
-        empresa_act = db.query(Empresa).filter_by(rnc=config["rnc"]).first()
-        validaciones_db = db.query(ValidacionFiscal).filter_by(
-            empresa_id=empresa_act.id, periodo=str(config["anio"])
-        ).all() if empresa_act else []
-
-        validaciones_front = [
-            {
-                "id": v.tipo_validacion,
-                "sist": float(v.valor_sistema),
-                "dgii": float(v.valor_dgii),
-                "dif": float(v.diferencia),
-                "estado": v.estado
-            } for v in validaciones_db
-        ]
-
-        # PASO 6: Motor de Riesgo DGII
         riesgo = calcular_riesgo(config["rnc"], config["anio"], cruce_terceros_data)
-        
-        # Generar archivos finales
+
+        _update_task(task_id, progress="Generando entregables...")
         archivos_generados = []
         try:
             ruta_excel, ruta_tex = generar_final(config["rnc"], config["anio"], config["regimen"])
             if ruta_excel:
-                archivos_generados.append({
-                    "nombre": "Anexo B & IR-2 (Excel AiConta)",
-                    "url": f"/api/descargar/{os.path.basename(ruta_excel)}"
-                })
+                archivos_generados.append({"nombre": "Anexo B & IR-2 (Excel)", "url": f"/api/descargar/{os.path.basename(ruta_excel)}"})
             if ruta_tex:
-                archivos_generados.append({
-                    "nombre": "Estados Financieros (Borrador PDF)",
-                    "url": f"/api/descargar/{os.path.basename(ruta_tex)}"
-                })
+                archivos_generados.append({"nombre": "Estados Financieros (PDF)", "url": f"/api/descargar/{os.path.basename(ruta_tex)}"})
         except Exception as e:
-            print(f"[!] Aviso: No se pudieron generar los entregables web: {e}")
-        
-        return {
-            "status": "success",
-            "message": "Procesamiento completado.",
-            "resultados": {
+            logging.warning(f"[!] No se pudieron generar los entregables finales: {e}")
+
+        _update_task(task_id, status="completed", progress="Completado",
+            result={
                 "ventas": res_pipeline["ir2_data"]["ventas"] if res_pipeline["ir2_data"] else 0,
-                "costos": res_pipeline["resumen"]["costo_ventas"],
+                "costos": res_pipeline["resumen"].get("costo_ventas", 0),
                 "utilidad": res_pipeline["ir2_data"]["renta_neta_imponible"] if res_pipeline["ir2_data"] else 0,
                 "isr_pagar": res_pipeline["ir2_data"]["isr_pagar"] if res_pipeline["ir2_data"] else 0,
-                "rnc": config["rnc"],
-                "anio": config["anio"],
-                "auditoria_cruces": validaciones_front,
-                "riesgo_dgii": riesgo
-            },
-            "archivos": archivos_generados
-        }
+                "rnc": config["rnc"], "anio": config["anio"],
+                "riesgo_dgii": riesgo,
+                "archivos": archivos_generados
+            })
     except Exception as e:
-        import traceback
-        logging.error(f"Error en pipeline: {traceback.format_exc()}")
-        return {"status": "error", "message": str(e)}
+        _update_task(task_id, status="error", error=str(e), progress="Error")
+        logging.error(f"Pipeline error [{task_id}]: {tb_mod.format_exc()}")
+    finally:
+        db.close()
 
 @app.get("/api/riesgo", dependencies=[Depends(verify_api_key)])
 async def get_riesgo_dgii(rnc: str, anio: int):
@@ -671,45 +690,58 @@ async def generar_ir2_ofv(cliente_id: int, periodo: str, formato: str = "xml", d
         empresa = db.query(Empresa).filter_by(id=cliente_id).first()
         if not empresa:
             raise HTTPException(status_code=404, detail="Cliente no encontrado")
-        
+
         # 1. Ejecutar Orquestación Completa
         orquestador = OrquestadorFiscal(db, empresa.rnc, periodo)
-        resultado = orquestador.ejecutar_pipeline_completo()
-        
+        resultado = orquestador.ejecutar_auditoria_fiscal_completa()
+
         # 2. Generar Archivo
-        generador = GeneradorIR2(db, resultado, empresa.rnc, periodo)
-        archivo_info = generador.generar(formato.lower())
-        
-        if "error" in archivo_info:
+        generador = GeneradorIR2(db, empresa.rnc, periodo)
+        archivo_info = generador.generar_entregable_completo()
+
+        # Buscar el archivo solicitado en la lista generada
+        archivo_match = None
+        for a in archivo_info.get("archivos", []):
+            fn = a.get("filename", "")
+            if formato.lower() in fn.lower():
+                archivo_match = a
+                break
+        if not archivo_match and archivo_info.get("archivos"):
+            archivo_match = archivo_info["archivos"][0]
+
+        if archivo_info.get("status") == "error" or not archivo_match:
             return JSONResponse(
                 status_code=400,
                 content={
                     "estado": "Bloqueado",
-                    "mensaje": archivo_info["error"],
-                    "detalle": archivo_info.get("detalle", []),
-                    "recomendacion_socio": archivo_info.get("recomendacion_socio", "")
+                    "mensaje": archivo_info.get("message", "Error en generación"),
+                    "detalle": [],
+                    "recomendacion_socio": ""
                 }
             )
 
         # Ruta dinámica relativa al proyecto
-        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        file_path = os.path.join(base_dir, "data", "output", archivo_info["archivo"])
-        
+        file_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            "data", "output", archivo_match["filename"]
+        )
+
         if not os.path.exists(file_path):
             raise HTTPException(status_code=500, detail="Archivo no se generó correctamente")
 
         # 3. Respuesta según tipo de archivo
         media_type = "application/octet-stream"
-        if formato.lower() == "pdf":
+        fn_lower = archivo_match["filename"].lower()
+        if fn_lower.endswith(".pdf"):
             media_type = "application/pdf"
-        elif formato.lower() == "xml":
+        elif fn_lower.endswith(".xml"):
             media_type = "application/xml"
-        elif formato.lower() == "excel":
-            media_type = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-            
+        elif fn_lower.endswith(".xls") or fn_lower.endswith(".xlsx"):
+            media_type = "application/vnd.ms-excel"
+
         return FileResponse(
             path=file_path,
-            filename=archivo_info["archivo"],
+            filename=archivo_match["filename"],
             media_type=media_type
         )
 

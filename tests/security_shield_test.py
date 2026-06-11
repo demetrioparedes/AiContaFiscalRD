@@ -1,8 +1,10 @@
-import requests
 import os
+import pytest
+pytest.importorskip("requests")
+import requests
 
 BASE_URL = "http://localhost:8000"
-API_KEY = "AiConta_Secure_Key_2026_RD"
+API_KEY = os.getenv("API_SECRET_KEY", "AiConta_Secure_Key_2026_RD")
 
 def test_blindaje():
     print("--- INICIANDO AUDITORÍA DE SEGURIDAD (OPERACIÓN ESCUDO) ---")

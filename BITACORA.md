@@ -53,13 +53,18 @@ Desarrollar un asistente fiscal inteligente que automatice la auditoría prevent
   * Efectos de **Resplandor Esmeralda (Success Glow)** dinámicos al completar hitos de auditoría.
   * Integración de Voz: Reportes ejecutivos narrados y comandos de navegación activados.
 
-## 5. Próximos Pasos (Roadmap v2.0)
-1. **Módulo de Planificación Fiscal IA**: Análisis predictivo de flujo de caja para anticipar pagos de ISR.
-2. **Integración Bancaria vía API**: Conciliación automática de estados financieros con movimientos bancarios.
-3. **App Móvil de Consulta**: Dashboard simplificado para el dueño de la empresa (CEO View).
+* **Módulo de Planificación Fiscal IA (Hito v2.0):**
+  * **Motor Predictivo (`planificador_fiscal.py`)**: Implementación de proyecciones anuales basadas en tendencias estacionales y lineales para el cierre del 31 de diciembre.
+  * **Cálculo de Anticipos (Art. 314)**: Automatización de la previsión de pagos de anticipos según el Código Tributario Dominicano (1% ingresos brutos).
+  * **Dashboard Proactivo**: Inyecciones de UI neón-indigo con semáforos de salud de flujo de caja para evitar crisis de liquidez.
+  * **Integración API**: Exposición de métricas predictivas en el núcleo del pipeline fiscal (`motor_fiscal.py`).
+
+## 5. Próximos Pasos (Roadmap v2.1)
+1. **Integración Bancaria vía API**: Conciliación automática de estados financieros con movimientos bancarios.
+2. **App Móvil de Consulta**: Dashboard simplificado para el dueño de la empresa (CEO View).
 
 ## 6. Deuda Técnica y Pendientes
-* **Validación de IR-17**: Confirmar cálculos con datos de un cliente real de retenciones masivas.
+* **Optimización de Estacionalidad**: Incorporar más años de datos históricos cuando estén disponibles para refinar el factor de crecimiento IA.
 
 ***
 *Última actualización: 2026-04-11 -- Agente Antigravity (Socio Tecnológico)*

@@ -29,8 +29,8 @@ RNC_CONOCIDOS = {
     "1010019986": "Gastos Financieros",    # CARDNET
     "1016548549": "Gastos Financieros",    # VISANET
     "1010063390": "Gastos Financieros",    # CARDNET S.A.
-    "101654325":  "Gastos Financieros",    # CONSORCIO TARJETAS DOMINICANAS
-    "101001995":  "Gastos Financieros",    # ASISCARD
+    "1010654325": "Gastos Financieros",    # CONSORCIO TARJETAS DOMINICANAS
+    "1010019953": "Gastos Financieros",    # ASISCARD
     # Bancos
     "1010036551": "Gastos Financieros",    # BANCO POPULAR
     "1010016533": "Gastos Financieros",    # BHD LEON
@@ -39,6 +39,10 @@ RNC_CONOCIDOS = {
     "1010059854": "Gastos Financieros",    # BANCO SANTA CRUZ
     "1010040004": "Gastos Financieros",    # BANESCO
     "1010076390": "Gastos Financieros",    # LAFISE
+    "1010067890": "Gastos Financieros",    # BANCO CARIBE
+    "1010089012": "Gastos Financieros",    # BANCO VIMENCA
+    "1010090123": "Gastos Financieros",    # BANCO PROMERICA
+    "1010054321": "Gastos Financieros",    # BANCO ATLANTICO
     # Seguros
     "1010057139": "Seguros Obra y Vida",   # MAPFRE BHD
     "1010011953": "Seguros Obra y Vida",   # HUMANO SEGUROS
@@ -46,6 +50,10 @@ RNC_CONOCIDOS = {
     "1010034054": "Seguros Obra y Vida",   # SENASA
     "1010042017": "Seguros Obra y Vida",   # FLORIDA
     "1010026456": "Seguros Obra y Vida",   # LA COLONIAL
+    "1010067891": "Seguros Obra y Vida",   # PALIC
+    "1010078902": "Seguros Obra y Vida",   # GLOBAL
+    "1010045690": "Seguros Obra y Vida",   # PATRIA
+    "1010089013": "Seguros Obra y Vida",   # APAP
     # Agua y servicios básicos
     "1010001354": "Agua y Basura",         # CAASD
     "1010020011": "Agua y Basura",         # CORAASAN
@@ -54,6 +62,9 @@ RNC_CONOCIDOS = {
     "1010001702": "Gastos Financieros",    # DGII
     "1010001745": "Gastos de Personal",    # TSS/TESORERÍA
     "1010032487": "Gastos de Personal",    # INFOTEP
+    "1010056781": "Gastos de Personal",    # MINISTERIO DE TRABAJO
+    "1010067893": "Gastos Financieros",    # ADUANAS DGA
+    "1010034569": "Gastos de Personal",    # CONTRALORIA GENERAL
     # Supermercados
     "1010074123": "Gastos de Limpieza",    # BRAVO SUPERMARKET
     "1010074190": "Gastos de Limpieza",    # LA SIRENA / WALMART
@@ -61,11 +72,39 @@ RNC_CONOCIDOS = {
     "1010067234": "Gastos de Limpieza",    # PLAZA LAMA
     "1010033478": "Gastos de Limpieza",    # JUMBO
     "1010078945": "Gastos de Limpieza",    # APRECIO
+    "1010052345": "Gastos de Limpieza",    # OLE
+    "1010091234": "Gastos de Limpieza",    # IGA
     # Combustibles
     "1010023456": "Combustibles y Lubricantes",  # SUNIX
     "1010034123": "Combustibles y Lubricantes",  # SHELL
     "1010045678": "Combustibles y Lubricantes",  # TOTAL GAS
     "1010056789": "Combustibles y Lubricantes",  # TEXACO
+    "1010062345": "Combustibles y Lubricantes",  # ISLA
+    # Farmacias / Salud
+    "1010054322": "Gastos de Limpieza",    # FARMACIA CAROL
+    "1010065433": "Gastos de Limpieza",    # FARMACIA EL HORMIGO
+    "1010076544": "Gastos de Limpieza",    # FARMACIA AQUA
+    # Construcción y proveedores
+    "1010087655": "Reparaciones y Mantenimiento", # CONSTRUCTORA NORBERTO ODEBRECHT
+    "1010098766": "Reparaciones y Mantenimiento", # CONSTRUCTORA SANTIAGO
+    "1010032145": "Reparaciones y Mantenimiento", # FERRETERIA AMERICANA
+    "1010043210": "Reparaciones y Mantenimiento", # FERRETERIA OCHO
+    # Logística / Transporte
+    "1010056782": "Combustibles y Lubricantes",  # TRANSPORTE SEGURA
+    "1010067892": "Combustibles y Lubricantes",  # MOTORES DELCIO
+    # Hoteles / Turismo
+    "1010078901": "Dietas y Gastos de Viaje",  # HOTEL JARDIN
+    "1010089010": "Dietas y Gastos de Viaje",  # HOTEL INTERCONTINENTAL
+    "1010090120": "Dietas y Gastos de Viaje",  # GRUPO PUNTACANA
+    # Educación
+    "1010022211": "Materiales de Oficina",   # PONTIFICIA U.C. MADRE MAESTRA
+    "1010033322": "Materiales de Oficina",   # UNIBE
+    "1010044433": "Materiales de Oficina",   # INTEC
+    "1010055544": "Materiales de Oficina",   # APEC
+    # Medios / Publicidad
+    "1010066655": "Publicidad y Mercadeo",   # LISTIN DIARIO
+    "1010077766": "Publicidad y Mercadeo",   # DIARIO LIBRE
+    "1010088877": "Publicidad y Mercadeo",   # TELEMICRO
 }
 
 # =====================================================================
@@ -84,8 +123,10 @@ def obtener_catalogo_ia():
         "Honorarios Profesionales": ["ABOGADO", "CONTABLE", "AUDITOR", "CONSULTOR", "ASESORIA", "LEGAL", "ASOCIADOS"],
         "Seguros Obra y Vida":      ["SEGUROS", "MAPFRE", "HUMANO", "SENASA", "UNIVERSAL", "COLONIAL", "POLIZA", "ASEGURADORA"],
         "Gastos Financieros":       ["BANCO", "BHD", "POPULAR", "BANRESERVAS", "SCOTIABANK", "CONSORCIO", "COOPERATIVA", "INTERESES", "COMISION", "TARJETA", "CARDNET"],
-        "Dietas y Gastos de Viaje": ["RESTAURANT", "HOTEL", "RESORT", "AEROLINEA", "UBER", "TAXI", "ALIMENTOS", "CAFETERIA"],
-        "Publicidad y Mercadeo":    ["PUBLICIDAD", "MERCADEO", "MARKETING", "FACEBOOK", "META ", "INSTAGRAM", "IMPRENTA", "ROTULO", "CARTEL"],
+        "Dietas y Gastos de Viaje": ["RESTAURANT", "HOTEL", "RESORT", "AEROLINEA", "UBER", "TAXI", "ALIMENTOS", "CAFETERIA", "DELICIA", "PIZZA", "COMIDA", "VIATICO"],
+        "Publicidad y Mercadeo":    ["PUBLICIDAD", "MERCADEO", "MARKETING", "FACEBOOK", "META ", "INSTAGRAM", "IMPRENTA", "ROTULO", "CARTEL", "DISENO", "CREATIVO", "AGENCIA"],
+        "Salud y Farmacia":         ["FARMACIA", "CLINICA", "HOSPITAL", "MEDICO", "LABORATORIO", "SALUD", "ODONTOLOGIA", "VETERINARIA"],
+        "Educación y Capacitación": ["COLEGIO", "ESCUELA", "UNIVERSIDAD", "INSTITUTO", "CAPACITACION", "CURSO", "TALLER FORMATIVO", "ACADEMIA"],
         "Adquisición de Activos Fijos": ["MUEBLES", "VEHICULO", "COMPUTADORA", "LAPTOP", "MOBILIARIO", "HERRAMIENTA", "MAQUINARIA"],
         "Arrendamientos":           ["ALQUILER", "ARRENDAMIENTO", "RENTA LOCAL", "INMOBILIARIA", "LOCAL COMERCIAL"],
     }

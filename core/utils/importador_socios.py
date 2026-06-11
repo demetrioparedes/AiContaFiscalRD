@@ -1,6 +1,6 @@
 import pandas as pd
 from sqlalchemy.orm import Session
-from core.database import Socio, Empresa
+from database import Socio, Empresa
 import os
 
 def importar_socios_desde_excel(db: Session, empresa_id: int, excel_path: str):
@@ -70,9 +70,9 @@ def importar_socios_desde_excel(db: Session, empresa_id: int, excel_path: str):
 
 if __name__ == "__main__":
     from core.database import SessionLocal
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     db = SessionLocal()
-    # Test simple
-    path = r"c:\GEMINI\AiContaFiscalRD\data\templates\template_beneficiarios.xlsx"
+    path = os.path.join(BASE_DIR, "data", "templates", "template_beneficiarios.xlsx")
     res = importar_socios_desde_excel(db, 1, path)
     print(res)
     db.close()

@@ -1,8 +1,9 @@
-import sys
-import os
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+import sys, os
 
-# Localizar core relativo a este archivo de test
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 project_root = os.path.dirname(current_dir)
 sys.path.insert(0, project_root)

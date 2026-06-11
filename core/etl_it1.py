@@ -7,10 +7,13 @@ Extrae los datos mensuales de declaraciones IT-1 desde:
 
 Alimenta la tabla DgiiIt1 que usan los Cruces 02, 03 y 08 del Motor BIG4.
 """
-import sys
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+import sys, os
 
-import os
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 import csv
 from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
 from database import SessionLocal, Empresa, DgiiIt1

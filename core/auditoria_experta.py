@@ -165,7 +165,7 @@ class AuditoriaExperta:
     def _check_ley_residuos_98_25(self):
         """Red Flag: Contribución Especial para Residuos Sólidos (Ley 98-25)."""
         ef = self.db.query(EstadoFinanciero).filter_by(empresa_id=self.empresa_id, periodo=self.anio_str).first()
-        ingresos_brutos = float(ef.ventas) if ef and ef.ventas else 0.0
+        ingresos_brutos = float(ef.ventas_totales) if ef and ef.ventas_totales else 0.0
 
         if ingresos_brutos == 0:
             return  # No se puede calcular sin ingresos

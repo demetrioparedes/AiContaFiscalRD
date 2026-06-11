@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import or_
 from typing import List, Dict, Any
-from core.database import PadronDGII, Dgii606, Socio
+from database import PadronDGII, Dgii606, Socio
 
 class ValidadorRNC:
     """

@@ -353,6 +353,12 @@ function completeProcessing() {
     // Si la API no falló y devolvió resultados
     if (dataApi && dataApi.status === "success") {
         poblarResultadosUI(dataApi.resultados);
+        
+        // --- NUEVO: Inyectar Planificación IA ---
+        if (dataApi.planificacion) {
+            poblarIAPlanning(dataApi.planificacion);
+        }
+        
         document.querySelector('button[onclick="switchTab(\'premium\')"]').click();
         renderDashboardPremium(); // Nueva visualización Premium
         
@@ -797,6 +803,51 @@ async function searchPadron(searchTerm) {
             statusEl.innerHTML = '<span style="color:#ef4444">Fallo de Red</span>';
         }
     }, 600);
+}
+
+/**
+ * --- IA PLANNING ENGINE FRONTEND ---
+ * Puebla las tarjetas de proyección fiscal y salud de flujo de caja
+ */
+function poblarIAPlanning(plan) {
+    const fCur = (val) => new Intl.NumberFormat('es-DO', { style: 'currency', currency: 'DOP' }).format(val || 0);
+    const container = document.getElementById('ia-planning-container');
+    if (!container) return;
+
+    // Mostrar el panel con efecto
+    container.style.display = 'block';
+    container.style.opacity = '0';
+    setTimeout(() => { container.style.opacity = '1'; container.style.transition = 'opacity 0.8s ease'; }, 100);
+
+    // 1. Cifras principales con animación de conteo básica
+    document.getElementById('ia-res-ventas').textContent = fCur(plan.ventas_proyectadas_anuales);
+    document.getElementById('ia-res-isr').textContent = fCur(plan.isr_estimado_anual);
+    document.getElementById('ia-res-anticipos').textContent = fCur(plan.anticipo_mensual_estimado);
+
+    // 2. Metadatos dinámicos
+    const factorSubida = Math.round((plan.factor_crecimiento - 1) * 100);
+    document.getElementById('ia-meta-ventas').innerHTML = `
+        <i class="ri-line-chart-line"></i> Tendencia: ${plan.factor_crecimiento >= 1 ? 'Crecimiento' : 'Ajuste'} (${factorSubida > 0 ? '+' : ''}${factorSubida}%)
+    `;
+    document.getElementById('ia-meta-isr').textContent = `Tasa Efectiva Proyectada: ${plan.tasa_efectiva_proyectada.toFixed(2)}%`;
+    
+    // 3. Renderizar el Badge de Salud de Flujo (Semáforo IA)
+    const healthDiv = document.getElementById('ia-health-status');
+    let healthClass = 'health-good';
+    let healthIcon = 'ri-checkbox-circle-fill';
+    let healthText = 'Salud Fiscal: Óptima';
+
+    if (plan.salud_flujo === "ADVERTENCIA") {
+        healthClass = 'health-warn';
+        healthIcon = 'ri-error-warning-fill';
+        healthText = 'Salud Fiscal: Tensión de Flujo';
+    } else if (plan.salud_flujo === "CRITICO") {
+        healthClass = 'health-bad';
+        healthIcon = 'ri-alarm-warning-fill';
+        healthText = 'Salud Fiscal: Riesgo de Liquidez';
+    }
+
+    healthDiv.innerHTML = `<span class="health-pill ${healthClass}"><i class="${healthIcon} mr-1"></i> ${healthText}</span>`;
 }
 
 async function createClient() {

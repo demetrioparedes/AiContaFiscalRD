@@ -1,8 +1,10 @@
 """
-AiContaFiscalRD - Modelo Completo de Base de Datos (Arquitectura SaaS / Big4)
+AiContaFiscalRD — Modelo Completo de Base de Datos (Arquitectura SaaS / Big4)
 =============================================================================
-Modelo de producción para PostgreSQL / SQLite.
-Diseñado para alto volumen, cruces fiscales automáticos y generación de IR-2.
+Soporte dual SQLite (desarrollo/local) y PostgreSQL (producción/Supabase).
+La selección se hace automáticamente vía DATABASE_URL en .env.
+
+SQLAlchemy ORM: mismo código, dos motores.
 """
 from sqlalchemy import create_engine, text, Column, Integer, String, Boolean, ForeignKey, Text, Date, Numeric, DateTime, Index
 from sqlalchemy.orm import declarative_base, sessionmaker, relationship
@@ -15,30 +17,56 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 os.makedirs(DATA_DIR, exist_ok=True)
 
-DATABASE_URL = f"sqlite:///{os.path.join(DATA_DIR, 'aicontafiscal_core.db')}"
+# ─── Configuración de Base de Datos ─────────────────────────────
+# Orden de precedencia:
+# 1. Variable de entorno DATABASE_URL (producción: PostgreSQL en Supabase)
+# 2. SQLite local (desarrollo)
+_DATABASE_URL_ENV = os.getenv("DATABASE_URL", "").strip()
 
-# Blindaje Anti-Lock SQLite (3 capas de protección):
-# 1. check_same_thread=False → permite uso en múltiples hilos (FastAPI async)
-# 2. timeout=30 → espera hasta 30s si otra conexión tiene el lock (en vez de fallar)
-# 3. WAL mode → (en init_db) permite que lecturas no bloqueen escrituras simultáneas
-engine = create_engine(
-    DATABASE_URL,
-    echo=False,
-    connect_args={
-        "check_same_thread": False,
-        "timeout": 30
-    },
-    pool_pre_ping=True,
-)
+if _DATABASE_URL_ENV:
+    DATABASE_URL = _DATABASE_URL_ENV
+    _ENGINE = "postgresql"
+else:
+    _DB_PATH = os.path.join(DATA_DIR, 'aicontafiscal_core.db')
+    DATABASE_URL = f"sqlite:///{_DB_PATH}"
+    _ENGINE = "sqlite"
+
+print(f"[DB] Motor: {_ENGINE.upper()} | {DATABASE_URL[:50]}...")
+
+# ─── Creación del Engine ─────────────────────────────────────────
+if _ENGINE == "postgresql":
+    engine = create_engine(
+        DATABASE_URL,
+        echo=False,
+        pool_pre_ping=True,          # Verifica conexión antes de usarla
+        pool_size=5,                 # Conexiones en pool (PgBouncer compatible)
+        max_overflow=10,             # Conexiones extra bajo demanda
+        connect_args={
+            "sslmode": "require",
+            "connect_timeout": 10,
+        },
+    )
+else:
+    engine = create_engine(
+        DATABASE_URL,
+        echo=False,
+        connect_args={
+            "check_same_thread": False,
+            "timeout": 30,
+        },
+        pool_pre_ping=True,
+    )
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+
 
 # ==========================================
 # 1. EMPRESAS (SaaS Multi-tenant)
 # ==========================================
 class PadronDGII(Base):
     __tablename__ = "padron_dgii"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     rnc = Column(String(20), unique=True, index=True)
     razon_social = Column(String(200), index=True)
@@ -46,6 +74,7 @@ class PadronDGII(Base):
     fecha_inicio = Column(String(20))
     estado = Column(String(50))
     regimen_pago = Column(String(100))
+
 
 class Empresa(Base):
     """Permite SaaS o múltiples clientes."""
@@ -58,12 +87,12 @@ class Empresa(Base):
     email = Column(Text)
     fecha_creacion = Column(DateTime, default=func.now())
 
-    # Relaciones (Lógica Industrial)
     registros_606 = relationship("Dgii606", back_populates="empresa", cascade="all, delete-orphan")
     registros_607 = relationship("Dgii607", back_populates="empresa", cascade="all, delete-orphan")
     socios = relationship("Socio", back_populates="empresa", cascade="all, delete-orphan")
     estados_financieros = relationship("EstadoFinanciero", back_populates="empresa", cascade="all, delete-orphan")
     validaciones = relationship("ValidacionFiscal", back_populates="empresa", cascade="all, delete-orphan")
+
 
 # ==========================================
 # 2. DGII 606 (Compras)
@@ -88,22 +117,19 @@ class Dgii606(Base):
     monto_propina_legal = Column(Numeric(18,2), default=0.0)
     forma_pago = Column(Integer)
     creado = Column(DateTime, default=func.now())
-    
-    # Relación con Empresa
+
     empresa = relationship("Empresa", back_populates="registros_606")
-    
-    # Extensiones internas para el Motor:
     anulada = Column(Boolean, default=False)
-    cuenta_contable = Column(String(50)) # Llenado por el Clasificador
+    cuenta_contable = Column(String(50))
 
 Index('idx_606_empresa', Dgii606.empresa_id)
 Index('idx_606_periodo', Dgii606.periodo)
+
 
 # ==========================================
 # 3. DGII 607 (Ventas)
 # ==========================================
 class Dgii607(Base):
-    """Formato real del Reporte 607 de DGII"""
     __tablename__ = "dgii_607"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
@@ -124,17 +150,17 @@ class Dgii607(Base):
     permuta = Column(Numeric(18,2), default=0.0)
     otras_formas = Column(Numeric(18,2), default=0.0)
     creado = Column(DateTime, default=func.now())
-    
-    # Relación con Empresa
+
     empresa = relationship("Empresa", back_populates="registros_607")
-    
-    # Extensiones internas:
     anulada = Column(Boolean, default=False)
     monto_exento = Column(Numeric(18,2), default=0.0)
     retencion_isr = Column(Numeric(18,2), default=0.0)
+    retencion_itbis = Column(Numeric(18,2), default=0.0)
+
 
 Index('idx_607_empresa', Dgii607.empresa_id)
 Index('idx_607_periodo', Dgii607.periodo)
+
 
 # ==========================================
 # 4. DGII IT-1 (Declaración ITBIS)
@@ -156,43 +182,34 @@ class DgiiIt1(Base):
 
 Index('idx_it1_empresa', DgiiIt1.empresa_id)
 
+
 # ==========================================
-# 4.1. DGII IR-17 (Retenciones y Retribuciones)
+# 4.1. DGII IR-17
 # ==========================================
 class DgiiIr17(Base):
-    """Declaración mensual de retenciones a terceros y retribuciones complementarias."""
     __tablename__ = "dgii_ir17"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
-    periodo = Column(String(6)) # YYYYMM
-    
-    # ISR Retenido
-    alquileres = Column(Numeric(18,2), default=0.0)      # 10%
-    honorarios = Column(Numeric(18,2), default=0.0)      # 10%
-    servicios_tecnicos = Column(Numeric(18,2), default=0.0) # 2%
-    otros_pagos = Column(Numeric(18,2), default=0.0)     # 1% u otros
-    dividendos = Column(Numeric(18,2), default=0.0)      # 10%
-    
-    # ITBIS Retenido a Terceros (Suma de retenciones en 606)
+    periodo = Column(String(6))
+    alquileres = Column(Numeric(18,2), default=0.0)
+    honorarios = Column(Numeric(18,2), default=0.0)
+    servicios_tecnicos = Column(Numeric(18,2), default=0.0)
+    otros_pagos = Column(Numeric(18,2), default=0.0)
+    dividendos = Column(Numeric(18,2), default=0.0)
     itbis_retenido_terceros = Column(Numeric(18,2), default=0.0)
-    
-    # Retribuciones Complementarias
     retribuciones_complementarias = Column(Numeric(18,2), default=0.0)
-    
-    # Totales
     total_is_retenido = Column(Numeric(18,2), default=0.0)
     total_a_pagar = Column(Numeric(18,2), default=0.0)
-    
     creado = Column(DateTime, default=func.now())
 
 Index('idx_ir17_empresa', DgiiIr17.empresa_id)
 Index('idx_ir17_periodo', DgiiIr17.periodo)
 
+
 # ==========================================
-# 5. CLASIFICADOR FISCAL (El Cerebro)
+# 5. CLASIFICADOR FISCAL
 # ==========================================
 class ClasificacionFiscal(Base):
-    """Convierte los comprobantes en cuentas contables automáticas."""
     __tablename__ = "clasificacion_fiscal"
     id = Column(Integer, primary_key=True)
     tipo_ncf = Column(String(3))
@@ -203,11 +220,11 @@ class ClasificacionFiscal(Base):
     deducible = Column(Boolean, default=True)
     aplica_itbis = Column(Boolean, default=True)
 
+
 # ==========================================
 # 6. ACTIVOS FIJOS
 # ==========================================
 class ActivoFijo(Base):
-    """Para generar automáticamente depreciación fiscal IR-2 (Anexo D)"""
     __tablename__ = "activos"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
@@ -221,11 +238,11 @@ class ActivoFijo(Base):
     valor_libro = Column(Numeric(18,2), default=0.0)
     creado = Column(DateTime, default=func.now())
 
+
 # ==========================================
 # 7. INVENTARIO
 # ==========================================
 class Inventario(Base):
-    """Motor necesario para Costo de ventas IR-2"""
     __tablename__ = "inventarios"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
@@ -235,13 +252,13 @@ class Inventario(Base):
     costo_unitario = Column(Numeric(18,2), default=0.0)
     valor_total = Column(Numeric(18,2), default=0.0)
     fecha_registro = Column(Date)
-    tipo_inventario = Column(String(20)) # 'inicial' o 'final'
+    tipo_inventario = Column(String(20))
+
 
 # ==========================================
 # 8. PRESTAMOS
 # ==========================================
 class Prestamo(Base):
-    """Permite generar intereses deducibles y flujo financiero."""
     __tablename__ = "prestamos"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
@@ -253,40 +270,54 @@ class Prestamo(Base):
     tasa_interes = Column(Numeric(6,3), default=0.0)
     cuota_mensual = Column(Numeric(18,2), default=0.0)
     creado = Column(DateTime, default=func.now())
-    # Extendemos para el motor:
     intereses_pagados = Column(Numeric(18,2), default=0.0)
 
+
 # ==========================================
-# 9. ESTADOS FINANCIEROS (Generados)
+# 9. ESTADOS FINANCIEROS
 # ==========================================
 class EstadoFinanciero(Base):
     __tablename__ = "estados_financieros"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
-    periodo = Column(String(6)) # Anual, ej "2025"
+    periodo = Column(String(6))
     ventas_totales = Column(Numeric(18,2), default=0.0)
+    ventas_exentas = Column(Numeric(18,2), default=0.0)
     costo_ventas = Column(Numeric(18,2), default=0.0)
     gastos_operativos = Column(Numeric(18,2), default=0.0)
+    gastos_personal = Column(Numeric(18,2), default=0.0)
     utilidad_bruta = Column(Numeric(18,2), default=0.0)
     utilidad_neta = Column(Numeric(18,2), default=0.0)
-    creado = Column(DateTime, default=func.now())
-    # Componentes adicionales
-    ventas_exentas = Column(Numeric(18,2), default=0.0)
-    gastos_personal = Column(Numeric(18,2), default=0.0)
-    isr_calcular = Column(Numeric(18,2), default=0.0)
     renta_imponible = Column(Numeric(18,2), default=0.0)
+    isr_calcular = Column(Numeric(18,2), default=0.0)
     anticipos = Column(Numeric(18,2), default=0.0)
     retenciones = Column(Numeric(18,2), default=0.0)
     isr_pagar = Column(Numeric(18,2), default=0.0)
-
-    # Relación
+    creado = Column(DateTime, default=func.now())
     empresa = relationship("Empresa", back_populates="estados_financieros")
+
+
+# ==========================================
+# 9.1. ESCENARIOS DE PLANIFICACIÓN
+# ==========================================
+class PlanificacionScenario(Base):
+    __tablename__ = "planificacion_scenarios"
+    id = Column(Integer, primary_key=True)
+    empresa_id = Column(Integer, ForeignKey("empresas.id"))
+    nombre_escenario = Column(String(50))
+    periodo = Column(String(6))
+    ventas_proyectadas = Column(Numeric(18,2), default=0.0)
+    gastos_proyectados = Column(Numeric(18,2), default=0.0)
+    isr_estimado_anual = Column(Numeric(18,2), default=0.0)
+    anticipo_sugerido = Column(Numeric(18,2), default=0.0)
+    factor_crecimiento = Column(Numeric(5,2), default=1.0)
+    creado = Column(DateTime, default=func.now())
+
 
 # ==========================================
 # 10. VALIDACIONES FISCALES
 # ==========================================
 class ValidacionFiscal(Base):
-    """Motor de control automático."""
     __tablename__ = "validaciones_fiscales"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
@@ -295,19 +326,17 @@ class ValidacionFiscal(Base):
     valor_sistema = Column(Numeric(18,2), default=0.0)
     valor_dgii = Column(Numeric(18,2), default=0.0)
     diferencia = Column(Numeric(18,2), default=0.0)
-    estado = Column(String(20)) # "OK", "CRITICO", "ADVERTENCIA"
-    recomendacion_socio = Column(Text) # El consejo del socio experto
-    asiento_propuesto = Column(Text) # Sugerencia de ajuste contable
+    estado = Column(String(20))
+    recomendacion_socio = Column(Text)
+    asiento_propuesto = Column(Text)
     creado = Column(DateTime, default=func.now())
-
-    # Relación
     empresa = relationship("Empresa", back_populates="validaciones")
 
+
 # ==========================================
-# REPOSITORIOS ADICIONALES NECESARIOS PARA EL PIPELINE
+# TSS / IR-18
 # ==========================================
 class TssNomina(Base):
-    """TSS: Nómina y aportes laborales. Clave para Validación."""
     __tablename__ = "tss_nomina"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
@@ -316,8 +345,8 @@ class TssNomina(Base):
     salario_cotizable = Column(Numeric(18,2), default=0.0)
     aporte_empresa = Column(Numeric(18,2), default=0.0)
 
+
 class Ir18Retenciones(Base):
-    """IR-18: Retenciones a asalariados."""
     __tablename__ = "ir18_retenciones"
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey("empresas.id"))
@@ -328,36 +357,26 @@ class Ir18Retenciones(Base):
 
 
 # ==========================================
-# 11. SOCIOS Y BENEFICIARIOS FINALES (H-1/H-2)
+# 11. SOCIOS Y BENEFICIARIOS FINALES
 # ==========================================
 class Socio(Base):
-    """Módulo para cumplimiento de Anexos H-1 y H-2 (Beneficiario Final)"""
     __tablename__ = 'socios'
-
     id = Column(Integer, primary_key=True)
     empresa_id = Column(Integer, ForeignKey('empresas.id'), nullable=False)
-    
-    identificador = Column(String(20), nullable=False)  # Cédula, RNC, Pasaporte, ID Extranjero
-    tipo_identificador = Column(Integer, nullable=False)  # 1:Cédula, 2:RNC, 3:Pasaporte, 4:ID Extranjero
+    identificador = Column(String(20), nullable=False)
+    tipo_identificador = Column(Integer, nullable=False)
     nombre_razon_social = Column(String(255), nullable=False)
-    
     nacionalidad = Column(String(100), default='Dominicana')
-    residencia_fiscal = Column(String(100), nullable=False)  # País
-    domicilio = Column(Text, nullable=True)  
+    residencia_fiscal = Column(String(100), nullable=False)
+    domicilio = Column(Text, nullable=True)
     telefono = Column(String(20), nullable=True)
-    
-    # Relación
     empresa = relationship("Empresa", back_populates="socios")
-    
-    porcentaje_participacion = Column(Numeric(5,2), nullable=False)  # Ej: 50.00
+    porcentaje_participacion = Column(Numeric(5,2), nullable=False)
     es_persona_fisica = Column(Boolean, default=True)
-    es_beneficiario_final = Column(Boolean, default=False)  
-    
-    entidad_madre_id = Column(Integer, ForeignKey('socios.id'), nullable=True)  
-    cargo = Column(String(100), nullable=True)  # Presidente, Gerente, etc.
-    
+    es_beneficiario_final = Column(Boolean, default=False)
+    entidad_madre_id = Column(Integer, ForeignKey('socios.id'), nullable=True)
+    cargo = Column(String(100), nullable=True)
     rnc_bloqueado = Column(Boolean, default=False)
-    
     fecha_actualizacion = Column(DateTime, default=func.now(), onupdate=func.now())
 
 Index('idx_socios_empresa', Socio.empresa_id)
@@ -365,37 +384,41 @@ Index('idx_socios_madre', Socio.entidad_madre_id)
 
 
 # ==========================================
-# FUNCIONES DE DB
+# FUNCIONES DE INICIALIZACIÓN
 # ==========================================
 def init_db():
     """
-    Inicializa la base de datos de forma segura:
-    - Activa WAL mode (lecturas concurrentes sin lock)
-    - Solo crea las tablas que faltan (no destruye datos existentes)
-    - Si la BD está en uso por otro proceso, espera hasta 30s antes de fallar
+    Inicializa la base de datos:
+    - PostgreSQL: create_all, sin PRAGMAs (no aplican)
+    - SQLite: create_all + WAL mode para concurrencia local
     """
-    db_path = os.path.join(DATA_DIR, 'aicontafiscal_core.db')
-    es_nueva = not os.path.exists(db_path)
+    db_path = os.path.join(DATA_DIR, 'aicontafiscal_core.db') if _ENGINE == "sqlite" else None
+    es_nueva = not os.path.exists(db_path) if db_path else False
 
-    # Crear todas las tablas que no existan (safe: no toca las que ya están)
+    # Crear tablas (safe: solo las que faltan)
     Base.metadata.create_all(bind=engine)
 
-    # Activar WAL mode — permite lecturas mientras hay escrituras simultáneas
-    # Esto es diferente al modo por defecto (DELETE) que bloquea todo
-    with engine.connect() as conn:
-        conn.execute(text("PRAGMA journal_mode=WAL"))
-        conn.execute(text("PRAGMA synchronous=NORMAL"))  # Velocidad + seguridad
-        conn.execute(text("PRAGMA cache_size=10000"))    # 10MB cache en RAM
+    if _ENGINE == "sqlite":
+        with engine.connect() as conn:
+            conn.execute(text("PRAGMA journal_mode=WAL"))
+            conn.execute(text("PRAGMA synchronous=NORMAL"))
+            conn.execute(text("PRAGMA cache_size=10000"))
+        estado = "nueva" if es_nueva else "existente (esquema actualizado)"
+        print(f"=== AiContaFiscalRD BD [SQLite] [{estado}] | {len(Base.metadata.tables)} tablas | WAL mode ===")
+    else:
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+        print(f"=== AiContaFiscalRD BD [PostgreSQL] | {len(Base.metadata.tables)} tablas | Pool activo ===")
 
-    estado = "nueva" if es_nueva else "existente (esquema actualizado)"
-    print(f"=== AiContaFiscalRD BD [{estado}] | {len(Base.metadata.tables)} tablas | WAL mode activo ===")
 
 def get_db():
+    """Dependency para FastAPI — sesión por request."""
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
+
 
 if __name__ == "__main__":
     init_db()

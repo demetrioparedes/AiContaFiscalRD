@@ -11,18 +11,21 @@ Soporta dos modos:
   - RAPIDO:   Solo IR-2 + Estado de Resultados  (~2 min)
   - COMPLETO: IR-2 + Estados + Notas + Flujo de caja  (~10 min)
 """
-import sys
-sys.path.insert(0, r"c:\GEMINI\AiContaFiscalRD\core")
+import sys, os
 
-import os
+# Resolución dinámica de ruta del proyecto
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 import json
 import pandas as pd
 from database import (
     SessionLocal, Empresa, EstadoFinanciero, ClasificacionFiscal
 )
 
-OUTPUT_DIR = r"c:\GEMINI\AiContaFiscalRD\data\output"
-TEMPLATE_TEX = r"c:\GEMINI\AiContaFiscalRD\.agent\skills\latex-pdf-generator\template_estados_financieros.tex"
+OUTPUT_DIR = os.path.join(BASE_DIR, "data", "output")
+TEMPLATE_TEX = os.path.join(BASE_DIR, ".agent", "skills", "latex-pdf-generator", "template_estados_financieros.tex")
 
 def fmt(valor):
     return f"{valor:,.2f}"

@@ -10,12 +10,34 @@ __pycache__/
 .pytest_cache/
 
 # Datos y Salidas
-data/aicontafiscal_core.db
+data/aicontafiscal_core.db*
+data/migracion_backup.json
 data/uploads/*
 !data/uploads/.gitkeep
 data/output/*
 !data/output/.gitkeep
+data/raw/*
+data/extracted/*
+data/consolidated/*
+data/tmp/*
+data/clientes/*/01_Formatos_606_607/*
+!data/clientes/*/01_Formatos_606_607/.gitkeep
+data/clientes/*/02_Nominas_TSS/*
+!data/clientes/*/02_Nominas_TSS/.gitkeep
+data/clientes/*/03_Estados_Financieros/*
+!data/clientes/*/03_Estados_Financieros/.gitkeep
+data/clientes/*/04_Declaraciones_Anteriores/*
+!data/clientes/*/04_Declaraciones_Anteriores/.gitkeep
+data/clientes/*/05_Auditoria_Logs/*
+data/clientes/*/06_Entregables_IR2_PDF/*
+
+# Node (old frontend assets)
+node_modules/
+package.json
+package-lock.json
 
 # IDEs
 .vscode/
 .idea/
+node_modules
+.atl/

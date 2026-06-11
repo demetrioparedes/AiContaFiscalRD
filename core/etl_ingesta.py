@@ -43,13 +43,17 @@ def limpiar_monto(valor) -> Decimal:
     try:
         # Limpia el string: quita comas, espacios, y caracteres raros
         limpio = str(valor).replace(",", "").replace(" ", "").strip()
-        
+
         # Cadena vacía o nula → cero exacto
-        if not limpio or limpio in ("", "None", "nan", "NULL"):
+        if not limpio or limpio in ("", "None", "nan", "NaN", "NULL"):
             return Decimal("0.00")
-        
+
         # Conversión segura: pasar por string evita errores de float binario
-        return Decimal(limpio).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+        # También atrapa "NaN" e "Inf" que Decimal acepta pero no queremos
+        resultado = Decimal(limpio)
+        if not resultado.is_finite():
+            return Decimal("0.00")
+        return resultado.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
     
     except InvalidOperation:
         # Si el valor es basura (letras, símbolos), devuelve cero y no explota
@@ -265,10 +269,13 @@ def cargar_607(ruta_archivo, empresa_id, anio_requerido, db):
         rnc_cli = normalizar_rnc(rnc_cli_raw)
         fecha_obj = normalizar_fecha(fecha_raw)
         monto = limpiar_monto(monto_raw)
+        itbis = limpiar_monto(itbis_raw)
         
         # Manejo de NCF Anulados o Notas de Crédito
         anulada = 1 if (monto < 0 or tipo_ncf in ["B04", "E34"]) else 0
-        if anulada: monto = abs(monto)
+        if anulada:
+            monto = abs(monto)
+            itbis = abs(itbis)
 
         if not tipo_ncf:
             errores += 1; continue
@@ -283,8 +290,10 @@ def cargar_607(ruta_archivo, empresa_id, anio_requerido, db):
             fecha_comprobante=fecha_obj, periodo=periodo, monto_facturado=monto, 
             itbis_facturado=itbis, monto_exento=limpiar_monto(exento_raw), 
             retencion_isr=limpiar_monto(ret_isr_raw), 
+            retencion_itbis=limpiar_monto(ret_itb_raw),
             anulada=anulada
         )
+
         db.add(registro)
         insertados += 1
 
@@ -313,11 +322,17 @@ def ejecutar_etl(directorio_empresa: str, rnc_empresa: str, anio_requerido: int)
         db.commit()
         db.refresh(empresa)
     
-    # Explorar recursivamente las carpetas del Expediente Digital
+    # Explorar solo las subcarpetas relevantes del Expediente Digital
+    subcarpetas = [
+        os.path.join(directorio_empresa, "01_Formatos_606_607"),
+        os.path.join(directorio_empresa, "04_Declaraciones_Anteriores"),
+    ]
     archivos_pendientes = []
-    for root, d_names, f_names in os.walk(directorio_empresa):
-        for f in f_names:
-            archivos_pendientes.append(os.path.join(root, f))
+    for carpeta in subcarpetas:
+        if os.path.exists(carpeta):
+            for root, d_names, f_names in os.walk(carpeta):
+                for f in f_names:
+                    archivos_pendientes.append(os.path.join(root, f))
             
     cargados_606 = 0
     cargados_607 = 0
@@ -335,13 +350,15 @@ def ejecutar_etl(directorio_empresa: str, rnc_empresa: str, anio_requerido: int)
         elif "607" in nombre:
             try: cargados_607 += cargar_607(ruta, empresa.id, anio_requerido, db)
             except Exception as e: print(f"  [X] Falla 607 {nombre}: {e}")
+    emp_id = empresa.id
     db.close()
     print("\n" + "=" * 60)
-    print(f"  RESUMEN FINAL ETL (Empresa ID {empresa.id}):")
+    print(f"  RESUMEN FINAL ETL (Empresa ID {emp_id}):")
     print(f"  - Registros DGII 606 insertados: {cargados_606}")
     print(f"  - Registros DGII 607 insertados: {cargados_607}")
     print(f"  - Declaraciones IT-1 cargadas:   {cargados_it1}")
     print("=" * 60)
+
 
 if __name__ == "__main__":
     # Test de sanidad — corre con: python core/etl_ingesta.py

@@ -65,7 +65,8 @@ def generate_template():
     
     df = pd.DataFrame(data, columns=columns)
     
-    output_path = r"c:\GEMINI\AiContaFiscalRD\data\templates\template_beneficiarios.xlsx"
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    output_path = os.path.join(BASE_DIR, "data", "templates", "template_beneficiarios.xlsx")
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
     df.to_excel(output_path, index=False)

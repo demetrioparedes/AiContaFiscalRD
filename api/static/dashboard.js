@@ -184,6 +184,56 @@ const API_URL = 'http://localhost:8000/api';
         } catch(e) {
             // Mantener estado honesto
         }
+        // Cargar planificador luego del dashboard
+        renderPlanificador(rnc, anio);
+    }
+
+    async function renderPlanificador(rnc, anio) {
+        try {
+            // 1. Buscar cliente_id para este RNC
+            const clResp = await safeFetch(`${API_URL}/clientes`);
+            const clData = await clResp.json();
+            const cliente = (clData.clientes || []).find(c => c.rnc === rnc);
+            if (!cliente) return;
+
+            // 2. Obtener planificacion desde dashboard analitico
+            const dpResp = await safeFetch(`${API_URL}/dashboard_analitico/${cliente.id}/${anio}`);
+            const dpData = await dpResp.json();
+            if (!dpData || dpData.error) return;
+
+            const plan = dpData.planificacion || {};
+            const list = document.getElementById('planificador-list');
+            if (!list) return;
+
+            if (!plan.ventas_proyectadas && !plan.anticipo_sugerido) {
+                list.innerHTML = '<div class="table-empty">Sin datos de planificación. Ejecutá el pipeline primero.</div>';
+                return;
+            }
+
+            const fmt = (v) => new Intl.NumberFormat('es-DO', { style:'currency', currency:'DOP', minimumFractionDigits:0 }).format(v || 0);
+            list.innerHTML = `
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;padding:12px;">
+                    <div style="background:var(--bg-card);border-radius:8px;padding:10px;text-align:center;">
+                        <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;">Ventas Proyectadas</div>
+                        <div style="font-size:18px;font-weight:800;color:var(--text-primary);margin-top:4px;">${fmt(plan.ventas_proyectadas)}</div>
+                    </div>
+                    <div style="background:var(--bg-card);border-radius:8px;padding:10px;text-align:center;">
+                        <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;">ISR Estimado</div>
+                        <div style="font-size:18px;font-weight:800;color:var(--accent-amber);margin-top:4px;">${fmt(plan.isr_estimado_anual)}</div>
+                    </div>
+                    <div style="background:var(--bg-card);border-radius:8px;padding:10px;text-align:center;">
+                        <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;">Anticipo Sugerido (Art. 314)</div>
+                        <div style="font-size:18px;font-weight:800;color:var(--accent-emerald);margin-top:4px;">${fmt(plan.anticipo_sugerido)}</div>
+                    </div>
+                </div>
+                <div style="padding:0 12px 10px;font-size:10px;color:var(--text-muted);display:flex;justify-content:space-between;">
+                    <span>Crecimiento: ${(plan.factor_crecimiento || 1.0).toFixed(2)}x</span>
+                    <span>Períodos históricos: ${plan.periodos_historicos || 0}</span>
+                    ${plan.generado ? `<span>${new Date(plan.generado).toLocaleDateString('es-DO')}</span>` : ''}
+                </div>`;
+        } catch(e) {
+            // Silent fail — no bloquea el dashboard
+        }
     }
 
     function renderRiskFlags(flags, mensaje) {

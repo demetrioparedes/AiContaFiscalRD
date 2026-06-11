@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 import shutil
 import sys
 import logging
+import json
+from datetime import datetime
 from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
@@ -17,7 +19,7 @@ sys.path.insert(0, BASE_DIR)
 
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
-from core.database import init_db, SessionLocal, Empresa, ValidacionFiscal, PadronDGII, EstadoFinanciero, get_db
+from core.database import init_db, SessionLocal, Empresa, ValidacionFiscal, PadronDGII, EstadoFinanciero, get_db, UserProfile
 from core.ai_plantillas import generar_mensaje_cruce, generar_resumen_isr, necesita_ia
 from core.ai_conector import consultar_ia, construir_contexto_fiscal, PROVEEDOR_CHAT
 from core.run_pipeline import registrar_cliente
@@ -31,6 +33,9 @@ from fastapi.responses import FileResponse, JSONResponse
 import os
 from core.motor_riesgo_dgii import calcular_riesgo
 from core.generador_final import main as generar_final
+from api.dependencies import (
+    obtener_usuario, require_admin, require_contador, UsuarioActual
+)
 
 # ─── Task Store para BackgroundTasks ───────────────────────────
 import uuid
@@ -81,22 +86,99 @@ INDEX_HTML = os.path.join(STATIC_DIR, "index.html")
 
 app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
-from typing import List
-from fastapi.security import APIKeyHeader
+from typing import List, Optional
+import httpx
 
-# Configuración de Seguridad Industrial
-API_KEY_NAME = "X-API-KEY"
-api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
+# ─── Auth: Login via Supabase Auth REST API ──────────────────
+class LoginRequest(BaseModel):
+    email: str
+    password: str
 
-def verify_api_key(api_key: str = Depends(api_key_header)):
-    secret = os.getenv("API_SECRET_KEY")
-    if not secret:
-        logging.error("API_SECRET_KEY no configurada en .env — todas las requests serán rechazadas.")
-        raise HTTPException(status_code=500, detail="Error de configuración del servidor.")
-    if api_key != secret:
-        logging.warning(f"Intento de acceso no autorizado con API Key errónea.")
-        raise HTTPException(status_code=403, detail="Acceso no autorizado: API Key inválida")
-    return api_key
+class LoginResponse(BaseModel):
+    access_token: str
+    token_type: str = "bearer"
+    user: dict
+    profile: dict
+
+@app.post("/api/auth/login")
+async def login(data: LoginRequest, db: Session = Depends(get_db)):
+    """
+    Login con Supabase Auth (GoTrue).
+    Devuelve JWT + perfil de usuario.
+    """
+    supabase_url = os.getenv("SUPABASE_URL", "").rstrip("/")
+    anon_key = os.getenv("SUPABASE_ANON_KEY", "")
+
+    if not supabase_url or not anon_key:
+        raise HTTPException(status_code=500, detail="Supabase no configurado")
+
+    try:
+        async with httpx.AsyncClient(timeout=15) as client:
+            resp = await client.post(
+                f"{supabase_url}/auth/v1/token?grant_type=password",
+                headers={
+                    "apikey": anon_key,
+                    "Content-Type": "application/json",
+                },
+                json={"email": data.email, "password": data.password},
+            )
+            if resp.status_code != 200:
+                raise HTTPException(status_code=401, detail="Email o contraseña incorrectos")
+
+            auth_data = resp.json()
+            access_token = auth_data["access_token"]
+            auth_user_id = auth_data["user"]["id"]
+
+            # Buscar o crear perfil
+            perfil = db.query(UserProfile).filter_by(auth_user_id=auth_user_id).first()
+            if not perfil:
+                # Auto-registro: crear perfil básico (role=cliente por defecto)
+                perfil = UserProfile(
+                    auth_user_id=auth_user_id,
+                    email=data.email,
+                    nombre=auth_data["user"].get("user_metadata", {}).get("full_name", data.email.split("@")[0]),
+                    role="contador",
+                    empresas_ids="[]",
+                    activo=True,
+                )
+                db.add(perfil)
+                db.commit()
+                db.refresh(perfil)
+
+            perfil.ultimo_acceso = datetime.utcnow()
+            db.commit()
+
+            return {
+                "access_token": access_token,
+                "token_type": "bearer",
+                "user": {"id": auth_user_id, "email": data.email},
+                "profile": {
+                    "id": perfil.id,
+                    "email": perfil.email,
+                    "nombre": perfil.nombre,
+                    "role": perfil.role,
+                    "empresas_ids": json.loads(perfil.empresas_ids or "[]"),
+                },
+            }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error de autenticación: {str(e)}")
+
+
+@app.get("/api/auth/me")
+async def auth_me(usuario: UsuarioActual = Depends(obtener_usuario)):
+    """Devuelve el perfil del usuario autenticado."""
+    return {
+        "id": usuario.id,
+        "auth_user_id": usuario.auth_user_id,
+        "email": usuario.email,
+        "nombre": usuario.nombre,
+        "role": usuario.role,
+        "empresas_ids": usuario.empresas_ids,
+        "es_admin": usuario.es_admin,
+        "es_contador": usuario.es_contador,
+    }
 
 # --- BLINDAJE INDUSTRIAL: Global Exception Handler ---
 from fastapi import Request
@@ -123,8 +205,13 @@ class ClienteCreate(BaseModel):
 
 @app.get("/")
 async def root():
-    """Sirve el Dashboard Principal Multi-Cliente."""
+    """Sirve el Dashboard Principal. Protegido por JWT."""
     return FileResponse(INDEX_HTML)
+
+@app.get("/login")
+async def login_page():
+    """Sirve la página de inicio de sesión."""
+    return FileResponse(os.path.join(STATIC_DIR, "login.html"))
 
 @app.get("/api/health")
 async def health_check(db: Session = Depends(get_db)):
@@ -152,7 +239,7 @@ async def health_check(db: Session = Depends(get_db)):
 
     return health_status
 
-@app.get("/api/clientes", dependencies=[Depends(verify_api_key)])
+@app.get("/api/clientes", dependencies=[Depends(obtener_usuario)])
 async def listar_clientes(
     page: int = 1,
     per_page: int = 20,
@@ -175,7 +262,7 @@ async def listar_clientes(
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.post("/api/clientes", dependencies=[Depends(verify_api_key)])
+@app.post("/api/clientes", dependencies=[Depends(obtener_usuario)])
 async def crear_cliente(cliente: ClienteCreate, db: Session = Depends(get_db)):
     try:
         existente = db.query(Empresa).filter_by(rnc=cliente.rnc).first()
@@ -224,14 +311,14 @@ async def ver_cliente_ui(cliente_id: int):
     """Sirve la Vista Detalle Premium para un cliente específico."""
     return FileResponse(os.path.join(STATIC_DIR, "cliente.html"))
 
-@app.get("/api/clientes/{cliente_id}", dependencies=[Depends(verify_api_key)])
+@app.get("/api/clientes/{cliente_id}", dependencies=[Depends(obtener_usuario)])
 async def obtener_cliente(cliente_id: int, db: Session = Depends(get_db)):
     c = db.query(Empresa).filter_by(id=cliente_id).first()
     if c:
         return {"id": c.id, "rnc": c.rnc, "razon_social": c.nombre_empresa}
     raise HTTPException(status_code=404, detail="Cliente no encontrado")
 
-@app.get("/api/padron/buscar/", dependencies=[Depends(verify_api_key)])
+@app.get("/api/padron/buscar/", dependencies=[Depends(obtener_usuario)])
 async def buscar_padron(termino: str, db: Session = Depends(get_db)):
     """Busca en el Padrón de la DGII por RNC o Razón Social (Autocomplete limit 10)."""
     if len(termino) < 3:
@@ -258,7 +345,7 @@ async def buscar_padron(termino: str, db: Session = Depends(get_db)):
         print(f"Error buscando padrón: {e}")
         return []
 
-@app.post("/api/resumen_archivos/{tipo}", dependencies=[Depends(verify_api_key)])
+@app.post("/api/resumen_archivos/{tipo}", dependencies=[Depends(obtener_usuario)])
 async def resumen_archivos(tipo: str, anio: str = Form("2025"), files: List[UploadFile] = File(...)):
     """Genera un resumen rápido de los archivos cargados (606 o 607) verificando el año fiscal."""
     import pandas as pd
@@ -323,12 +410,12 @@ async def resumen_archivos(tipo: str, anio: str = Form("2025"), files: List[Uplo
         "warning": f"ATENCIÓN: Se limitó la carga. Se bloquearon facturas que no corresponden al año fiscal {anio}." if archivo_invalido_detectado else None
     }
 
-@app.post("/api/procesar_rapido/{cliente_id}/{periodo}", dependencies=[Depends(verify_api_key)])
+@app.post("/api/procesar_rapido/{cliente_id}/{periodo}", dependencies=[Depends(obtener_usuario)])
 async def procesar_rapido_mock(cliente_id: int, periodo: str):
     """Simula o prepara el pipeline, devolviendo confirmacion al dashboard."""
     return {"status": "ok", "message": "Dependencias conectadas. Iniciando..."}
 
-@app.get("/api/generar_ir2_oficial/{rnc}/{anio}", dependencies=[Depends(verify_api_key)])
+@app.get("/api/generar_ir2_oficial/{rnc}/{anio}", dependencies=[Depends(obtener_usuario)])
 async def generar_ir2_oficial_endpoint(rnc: str, anio: int):
     """Genera el IR-2 oficial de la DGII con los datos del cliente y lo devuelve como descarga."""
     from core.generador_ir2_oficial import generar_ir2_oficial
@@ -351,7 +438,7 @@ async def generar_ir2_oficial_endpoint(rnc: str, anio: int):
         return JSONResponse({"status": "error", "message": str(e)}, status_code=500)
 
 
-@app.post("/api/parse_ir2_anterior", dependencies=[Depends(verify_api_key)])
+@app.post("/api/parse_ir2_anterior", dependencies=[Depends(obtener_usuario)])
 async def parse_ir2_anterior(files: List[UploadFile] = File(...)):
     """Extrae datos de múltiples archivos IR-2 anteriores para autocompletar."""
     from core.pdf_parser_ir2 import extraer_datos_ir2
@@ -372,7 +459,7 @@ async def parse_ir2_anterior(files: List[UploadFile] = File(...)):
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
-@app.post("/api/procesar", dependencies=[Depends(verify_api_key)])
+@app.post("/api/procesar", dependencies=[Depends(obtener_usuario)])
 async def procesar(
     background_tasks: BackgroundTasks,
     rnc: str = Form(...),
@@ -428,7 +515,7 @@ async def procesar(
     return {"task_id": task_id, "status": "processing", "message": "Pipeline iniciado en segundo plano."}
 
 
-@app.get("/api/tasks/{task_id}", dependencies=[Depends(verify_api_key)])
+@app.get("/api/tasks/{task_id}", dependencies=[Depends(obtener_usuario)])
 async def obtener_estado_task(task_id: str):
     """Consulta el estado de un task de procesamiento."""
     task = _get_task(task_id)
@@ -495,7 +582,7 @@ def _ejecutar_pipeline(task_id: str, config: dict):
     finally:
         db.close()
 
-@app.get("/api/riesgo", dependencies=[Depends(verify_api_key)])
+@app.get("/api/riesgo", dependencies=[Depends(obtener_usuario)])
 async def get_riesgo_dgii(rnc: str, anio: int):
     """Calcula el Índice de Riesgo DGII bajo demanda."""
     try:
@@ -504,7 +591,7 @@ async def get_riesgo_dgii(rnc: str, anio: int):
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
-@app.post("/api/generar_ef", dependencies=[Depends(verify_api_key)])
+@app.post("/api/generar_ef", dependencies=[Depends(obtener_usuario)])
 async def generar_ef(rnc: str = Form(...), anio: int = Form(...)):
     try:
         ruta_excel, ruta_tex = generar_final(rnc, anio, "solo_ef")
@@ -523,7 +610,7 @@ async def generar_ef(rnc: str = Form(...), anio: int = Form(...)):
         import traceback
         return {"status": "error", "message": str(e), "trace": traceback.format_exc()}
 
-@app.post("/api/generar_ir2_final", dependencies=[Depends(verify_api_key)])
+@app.post("/api/generar_ir2_final", dependencies=[Depends(obtener_usuario)])
 async def generar_ir2_final_entregables(rnc: str = Form(...), anio: str = Form(...), db: Session = Depends(get_db)):
     """Orquesta la generación masiva de XML (OFV), Excel (DGII) y PDF (Constancia)."""
     try:
@@ -552,7 +639,7 @@ async def generar_ir2_final_entregables(rnc: str = Form(...), anio: str = Form(.
         logging.error(f"Error en generación IR-2 final: {traceback.format_exc()}")
         return {"status": "error", "message": f"Falla en generación: {str(e)}"}
 
-@app.get("/api/anexo_b", dependencies=[Depends(verify_api_key)])
+@app.get("/api/anexo_b", dependencies=[Depends(obtener_usuario)])
 async def get_anexo_b(rnc: str, anio: int):
     """Retorna el Reporte del Anexo B (Gastos categorizados por IR-2) con clasificación IA."""
     try:
@@ -627,7 +714,7 @@ def detectar_cruce(pregunta: str, resultado: dict):
                     return cruce
     return None
 
-@app.post("/api/chat_fiscal", dependencies=[Depends(verify_api_key)])
+@app.post("/api/chat_fiscal", dependencies=[Depends(obtener_usuario)])
 async def chat_fiscal(req: ChatRequest, db: Session = Depends(get_db)):
     """Endpoint único de asistencia fiscal (Plantillas + IA)."""
     # 1. Obtener datos actuales
@@ -669,7 +756,7 @@ async def chat_fiscal(req: ChatRequest, db: Session = Depends(get_db)):
         "respuesta": "Escribe una pregunta sobre tus impuestos o pide un 'resumen' fiscal."
     }
 
-@app.get("/api/dashboard_analitico/{cliente_id}/{periodo}", dependencies=[Depends(verify_api_key)])
+@app.get("/api/dashboard_analitico/{cliente_id}/{periodo}", dependencies=[Depends(obtener_usuario)])
 async def dashboard_analitico(cliente_id: int, periodo: int, db: Session = Depends(get_db)):
     """Consolida toda la data para el Dashboard Premium."""
     empresa = db.query(Empresa).filter_by(id=cliente_id).first()
@@ -680,7 +767,7 @@ async def dashboard_analitico(cliente_id: int, periodo: int, db: Session = Depen
     data = orquestador.obtener_dashboard_data()
     return data
 
-@app.post("/api/generar_ir2/{cliente_id}/{periodo}", dependencies=[Depends(verify_api_key)])
+@app.post("/api/generar_ir2/{cliente_id}/{periodo}", dependencies=[Depends(obtener_usuario)])
 async def generar_ir2_ofv(cliente_id: int, periodo: str, formato: str = "xml", db: Session = Depends(get_db)):
     """
     Endpoint para generar el IR-2 listo para Oficina Virtual (OFV).
@@ -748,7 +835,7 @@ async def generar_ir2_ofv(cliente_id: int, periodo: str, formato: str = "xml", d
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": f"Error al generar IR-2: {str(e)}"})
 
-@app.get("/api/estado_ir2/{cliente_id}/{periodo}", dependencies=[Depends(verify_api_key)])
+@app.get("/api/estado_ir2/{cliente_id}/{periodo}", dependencies=[Depends(obtener_usuario)])
 async def estado_ir2(cliente_id: int, periodo: str, db: Session = Depends(get_db)):
     """Devuelve solo el estado del IR-2 (útil para auditoría rápida)."""
     try:
@@ -771,7 +858,7 @@ async def estado_ir2(cliente_id: int, periodo: str, db: Session = Depends(get_db
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/api/narrativa_fiscal/{cliente_id}/{periodo}", dependencies=[Depends(verify_api_key)])
+@app.get("/api/narrativa_fiscal/{cliente_id}/{periodo}", dependencies=[Depends(obtener_usuario)])
 async def obtener_narrativa_fiscal(cliente_id: int, periodo: str, db: Session = Depends(get_db)):
     """Retorna un script narrativo (texto) para ser leído por el sintetizador de voz."""
     try:
@@ -789,7 +876,7 @@ async def obtener_narrativa_fiscal(cliente_id: int, periodo: str, db: Session = 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/api/descargar/{filename}", dependencies=[Depends(verify_api_key)])
+@app.get("/api/descargar/{filename}", dependencies=[Depends(obtener_usuario)])
 async def descargar_archivo(filename: str):
     """Endpoint ultra-seguro para descargar entregables (Previene Path Traversal)."""
     # Blindaje contra path traversal

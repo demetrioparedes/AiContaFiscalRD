@@ -384,6 +384,30 @@ Index('idx_socios_madre', Socio.entidad_madre_id)
 
 
 # ==========================================
+# 12. USER PROFILE (Auth Multi-Contador)
+# ==========================================
+class UserProfile(Base):
+    """
+    Perfil de usuario vinculado a Supabase Auth.
+    Controla qué empresas/contadores puede ver cada usuario.
+    """
+    __tablename__ = "user_profile"
+    id = Column(Integer, primary_key=True)
+    auth_user_id = Column(String(255), unique=True, nullable=False, index=True)
+    email = Column(String(255), unique=True, nullable=False)
+    nombre = Column(String(200), nullable=False)
+    role = Column(String(20), nullable=False, default="contador")
+    empresas_ids = Column(Text, default="[]")
+    empresa_id = Column(Integer, ForeignKey("empresas.id"), nullable=True)
+    activo = Column(Boolean, default=True)
+    creado = Column(DateTime, default=func.now())
+    ultimo_acceso = Column(DateTime, nullable=True)
+
+Index('idx_user_profile_auth', UserProfile.auth_user_id)
+Index('idx_user_profile_email', UserProfile.email)
+
+
+# ==========================================
 # FUNCIONES DE INICIALIZACIÓN
 # ==========================================
 def init_db():

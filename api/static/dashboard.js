@@ -1,27 +1,9 @@
 // AiContaFiscalRD - Dashboard Logic
 // Extraído automáticamente de index.html
 
-const API_URL = 'http://localhost:8000/api';
-    const API_KEY = 'AiConta_Secure_Key_2026_RD'; // Llave industrial por defecto
-    let hasData = false;             // data loaded from /api/riesgo
-    let hasDataFromPipeline = false; // data loaded from /api/procesar (ISR, NCF counts)
-
-    async function safeFetch(url, options = {}) {
-        if (!options.headers) options.headers = {};
-        options.headers['X-API-KEY'] = API_KEY;
-        
-        try {
-            const resp = await fetch(url, options);
-            if (resp.status === 403) {
-                console.error("Acceso denegado: API Key inválida.");
-                throw new Error("403 Forbidden - Revisa tu API Key");
-            }
-            return resp;
-        } catch (e) {
-            console.error("Error en safeFetch:", e);
-            throw e;
-        }
-    }
+const API_URL = (window.API_URL || window.location.origin) + '/api';
+    let hasData = false;
+    let hasDataFromPipeline = false;
 
     /* ── Navigation ── */
     function switchTab(tab) {

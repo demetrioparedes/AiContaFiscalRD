@@ -19,7 +19,6 @@ if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
 import json
-import pandas as pd
 from database import (
     SessionLocal, Empresa, EstadoFinanciero, ClasificacionFiscal
 )
@@ -36,6 +35,7 @@ def poblar_tablas_entregables(db, rnc: str, anio: int, modo: str = "rapido"):
 
 def exportar_excel(er, rnc: str, anio: int):
     """Genera el Excel del IR-2 con múltiples pestañas usando EstadoFinanciero."""
+    import pandas as pd
     print("  -> Generando IR-2 en Excel...")
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     

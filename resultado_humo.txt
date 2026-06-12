@@ -1,8 +1,124 @@
-Traceback (most recent call last):
-  File "C:\GEMINI\AiContaFiscalRD\test_report.py", line 84, in <module>
-    main()
-    ~~~~^^
-  File "C:\GEMINI\AiContaFiscalRD\test_report.py", line 11, in main
-    sys.stdout = open(r"c:\GEMINI\AiContaFiscalRD\resultado_humo.txt", "w", encoding="utf-8")
-                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-PermissionError: [Errno 13] Permission denied: 'c:\\GEMINI\\AiContaFiscalRD\\resultado_humo.txt'
+============================================================
+  AiContaFiscalRD — MOTOR ETL (Arquitectura Big4)
+============================================================
+  Ingestando Carpeta: C:\GEMINI\AiContaFiscalRD\data\clientes\130826552 | Periodo: 2025
+
+  [606] Analizando: DGII_F_606_130826552_202401.TXT
+  [X] Falla 606 DGII_F_606_130826552_202401.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202402.TXT
+  [X] Falla 606 DGII_F_606_130826552_202402.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202403.TXT
+  [X] Falla 606 DGII_F_606_130826552_202403.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202404.TXT
+  [X] Falla 606 DGII_F_606_130826552_202404.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202405.TXT
+  [X] Falla 606 DGII_F_606_130826552_202405.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202406.TXT
+  [X] Falla 606 DGII_F_606_130826552_202406.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202412.TXT
+  [X] Falla 606 DGII_F_606_130826552_202412.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202501.TXT
+  [X] Falla 606 DGII_F_606_130826552_202501.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202503.TXT
+  [X] Falla 606 DGII_F_606_130826552_202503.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202504.TXT
+  [X] Falla 606 DGII_F_606_130826552_202504.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202505.TXT
+  [X] Falla 606 DGII_F_606_130826552_202505.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202506.TXT
+  [X] Falla 606 DGII_F_606_130826552_202506.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202508.TXT
+  [X] Falla 606 DGII_F_606_130826552_202508.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202509.TXT
+  [X] Falla 606 DGII_F_606_130826552_202509.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202511.TXT
+  [X] Falla 606 DGII_F_606_130826552_202511.TXT: name 'pd' is not defined
+  [606] Analizando: DGII_F_606_130826552_202512.TXT
+  [X] Falla 606 DGII_F_606_130826552_202512.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202401.txt
+  [X] Falla 607 DGII_F_607_130826552_202401.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202402.txt
+  [X] Falla 607 DGII_F_607_130826552_202402.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202403.txt
+  [X] Falla 607 DGII_F_607_130826552_202403.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202404.txt
+  [X] Falla 607 DGII_F_607_130826552_202404.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202405.txt
+  [X] Falla 607 DGII_F_607_130826552_202405.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202406.txt
+  [X] Falla 607 DGII_F_607_130826552_202406.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202412.txt
+  [X] Falla 607 DGII_F_607_130826552_202412.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202501.txt
+  [X] Falla 607 DGII_F_607_130826552_202501.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202502.txt
+  [X] Falla 607 DGII_F_607_130826552_202502.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202503.txt
+  [X] Falla 607 DGII_F_607_130826552_202503.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202504.txt
+  [X] Falla 607 DGII_F_607_130826552_202504.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202505.txt
+  [X] Falla 607 DGII_F_607_130826552_202505.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202506.txt
+  [X] Falla 607 DGII_F_607_130826552_202506.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202507.txt
+  [X] Falla 607 DGII_F_607_130826552_202507.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202508.txt
+  [X] Falla 607 DGII_F_607_130826552_202508.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202509.txt
+  [X] Falla 607 DGII_F_607_130826552_202509.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202510.txt
+  [X] Falla 607 DGII_F_607_130826552_202510.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202511.txt
+  [X] Falla 607 DGII_F_607_130826552_202511.TXT: name 'pd' is not defined
+  [607] Analizando: DGII_F_607_130826552_202512.txt
+  [X] Falla 607 DGII_F_607_130826552_202512.TXT: name 'pd' is not defined
+    [IT-1] Insertados/Actualizados: 12 | Errores: 0
+  [606] Analizando: Terceros_130826552_2025_606.xls
+
+============================================================
+  RESUMEN FINAL ETL (Empresa ID 4):
+  - Registros DGII 606 insertados: 0
+  - Registros DGII 607 insertados: 0
+  - Declaraciones IT-1 cargadas:   12
+============================================================
+  [Inventario] Calculando Costo de Ventas Fiscal 2025...
+    [!] ADVERTENCIA: Inventario Final es 0. Riesgo de notificación DGII por margen bajo.
+    (+) Inventario Inicial: RD$            0.00
+    (+) Compras del Año:    RD$            0.00
+    (-) Inventario Final:   RD$            0.00
+    (=) Costo de Ventas:    RD$            0.00
+  [Activos] Calculando Depreciación Fiscal 2025...
+  [OK] Depreciación Total Permitida: RD$            0.00
+  [Auditoria] Analizando retenciones año 2025...
+
+[SOCIO AUDIT] Iniciando escaneo de Red Flags para periodo 2025...
+  [ALERT] ANTICIPOS_VACIOS: SOCIO TIPS: No se detectaron anticipos pagados en los IT-1. Valida si tienes saldos a favor de años anteriores.
+
+[Módulo IR-17] Generando declaraciones mensuales para 2025...
+  [OK] Proceso IR-17 completado.
+
+RESULTADOS DEL MOTOR — RNC 130826552 / 2025
+─────────────────────────────────────────────
+Registros procesados del 606:     0
+Registros anulados detectados:    0
+
+Ventas totales:                   RD$            0.00
+Costo de ventas:                  RD$            0.00
+Gastos operativos:                RD$            0.00
+Utilidad operativa:               RD$            0.00
+
+Gastos sin NCF (no deducibles):   RD$            0.00
+Ingresos exentos:                 RD$            0.00
+Pérdidas compensables:            RD$            0.00
+─────────────────────────────────────────────
+RENTA IMPONIBLE:                  RD$            0.00
+ISR BRUTO (27%):                  RD$            0.00
+Anticipos pagados:                RD$            0.00
+Retenciones aplicables:           RD$            0.00
+ISR A PAGAR:                      RD$            0.00
+─────────────────────────────────────────────
+
+BANDERAS DISPARADAS:
+[ROJO] SOCIO_ANTICIPOS_VACIOS | Sist: 0.00 | DGII: 1.00 | Dif: 1.00
+[ROJO] INTEGRIDAD_ACCIONARIA | Sist: 0.00 | DGII: 0.00 | Dif: 0.00

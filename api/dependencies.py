@@ -19,7 +19,7 @@ from typing import List, Optional
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
-from database import SessionLocal, AiContaUserProfile
+from core.database import SessionLocal, AiContaUserProfile
 
 # Scheme para extraer el Bearer token del header
 security = HTTPBearer(auto_error=False)

@@ -19,7 +19,7 @@ sys.path.insert(0, BASE_DIR)
 
 load_dotenv(os.path.join(BASE_DIR, ".env"))
 
-from core.database import init_db, SessionLocal, Empresa, ValidacionFiscal, PadronDGII, EstadoFinanciero, get_db, AiContaAiContaUserProfile
+from core.database import init_db, SessionLocal, Empresa, ValidacionFiscal, PadronDGII, EstadoFinanciero, get_db, AiContaUserProfile
 from core.ai_plantillas import generar_mensaje_cruce, generar_resumen_isr, necesita_ia
 from core.ai_conector import consultar_ia, construir_contexto_fiscal, PROVEEDOR_CHAT
 from core.run_pipeline import registrar_cliente

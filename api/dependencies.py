@@ -1,33 +1,30 @@
 """
 dependencies.py — Autenticación y Autorización Multi-Contador.
 ============================================================
-Usa JWT de Supabase Auth (GoTrue) validado localmente con PyJWT.
+Usa JWT de Supabase Auth (GoTrue) validado contra la API de Supabase.
 Tres roles: admin, contador, cliente.
 
 Flujo:
   1. Frontend login con email/password → Supabase Auth devuelve JWT
   2. Frontend envía JWT en header Authorization: Bearer <token>
-  3. Este módulo valida el JWT y extrae el perfil de usuario
-  4. Filtra datos según empresas_ids[] del perfil
+  3. Este módulo valida el JWT contra GET /auth/v1/user de Supabase
+  4. Extrae el perfil de usuario desde aiconta_user_profile
+  5. Filtra datos según empresas_ids[] del perfil
 """
 import os
 import json
 import logging
-import jwt as pyjwt
 from datetime import datetime
 from typing import List, Optional
+import httpx
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from core.database import SessionLocal, AiContaUserProfile
 
-# Scheme para extraer el Bearer token del header
 security = HTTPBearer(auto_error=False)
-
-# La clave pública para verificar JWT de Supabase
-# Supabase usa HS256 con el anon_key como secreto
+SUPABASE_URL = os.getenv("SUPABASE_URL", "").rstrip("/")
 SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY", "")
-SUPABASE_URL = os.getenv("SUPABASE_URL", "")
 
 
 class UsuarioActual:
@@ -39,27 +36,24 @@ class UsuarioActual:
         self.email = email
         self.nombre = nombre
         self.role = role
-        self.empresas_ids = empresas_ids      # IDs de empresas que puede ver
-        self.empresa_id = empresa_id           # Empresa específica (role=cliente)
+        self.empresas_ids = empresas_ids
+        self.empresa_id = empresa_id
         self.es_admin = role == "admin"
         self.es_contador = role == "contador"
         self.es_cliente = role == "cliente"
 
     def puede_ver_empresa(self, empresa_id: int) -> bool:
-        """Verifica si el usuario tiene acceso a una empresa específica."""
         if self.es_admin:
             return True
         return empresa_id in self.empresas_ids
 
     def puede_editar(self) -> bool:
-        """Solo admin y contador pueden ejecutar el pipeline."""
         return self.role in ("admin", "contador")
 
 
-def verificar_token(credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)):
+async def verificar_token(credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)):
     """
-    Verifica el JWT de Supabase.
-    Si no hay token, devuelve None (para endpoints públicos).
+    Verifica el JWT contra Supabase Auth REST API.
     """
     if credentials is None:
         return None
@@ -68,33 +62,42 @@ def verificar_token(credentials: Optional[HTTPAuthorizationCredentials] = Depend
     if not token:
         return None
 
+    if not SUPABASE_URL or not SUPABASE_ANON_KEY:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Supabase no configurado (SUPABASE_URL y SUPABASE_ANON_KEY requeridos)"
+        )
+
     try:
-        # Verificar JWT con el anon_key de Supabase (HS256)
-        payload = pyjwt.decode(
-            token,
-            SUPABASE_ANON_KEY,
-            algorithms=["HS256"],
-            options={"verify_aud": False}  # Supabase no siempre setea aud
-        )
-        return payload
-    except pyjwt.ExpiredSignatureError:
+        async with httpx.AsyncClient(timeout=10) as client:
+            resp = await client.get(
+                f"{SUPABASE_URL}/auth/v1/user",
+                headers={"apikey": SUPABASE_ANON_KEY, "Authorization": f"Bearer {token}"},
+            )
+            if resp.status_code != 200:
+                raise HTTPException(
+                    status_code=status.HTTP_401_UNAUTHORIZED,
+                    detail="Token inválido o expirado. Inicia sesión nuevamente."
+                )
+            user_data = resp.json()
+            return {
+                "sub": user_data["id"],
+                "email": user_data.get("email", ""),
+                "user_metadata": user_data.get("user_metadata", {}),
+            }
+    except httpx.TimeoutException:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Sesión expirada. Inicia sesión nuevamente."
-        )
-    except pyjwt.InvalidTokenError as e:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=f"Token inválido: {str(e)}"
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Servicio de autenticación temporalmente no disponible."
         )
 
 
-def obtener_usuario(
+async def obtener_usuario(
     payload: dict = Depends(verificar_token),
     db: Session = Depends(SessionLocal)
 ) -> UsuarioActual:
     """
-    Obtiene el perfil completo del usuario desde la DB.
+    Obtiene el perfil completo del usuario desde aiconta_user_profile.
     Dependencia principal para rutas protegidas.
     """
     if payload is None:
@@ -107,15 +110,28 @@ def obtener_usuario(
     if not auth_user_id:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Token inválido: no contiene subject (sub)."
+            detail="Token inválido: no contiene identificador de usuario."
         )
 
+    email = payload.get("email", "")
+
+    # Buscar perfil existente
     perfil = db.query(AiContaUserProfile).filter_by(auth_user_id=auth_user_id).first()
+
+    # Si no existe, auto-crear perfil básico
     if not perfil:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Usuario no registrado. Contactá al administrador."
+        nombre = payload.get("user_metadata", {}).get("full_name", email.split("@")[0] if email else "Usuario")
+        perfil = AiContaUserProfile(
+            auth_user_id=auth_user_id,
+            email=email,
+            nombre=nombre,
+            role="contador",
+            empresas_ids="[]",
+            activo=True,
         )
+        db.add(perfil)
+        db.commit()
+        db.refresh(perfil)
 
     if not perfil.activo:
         raise HTTPException(
@@ -127,7 +143,6 @@ def obtener_usuario(
     perfil.ultimo_acceso = datetime.utcnow()
     db.commit()
 
-    # Parsear empresas_ids desde JSON
     try:
         empresas_ids = json.loads(perfil.empresas_ids or "[]")
     except (json.JSONDecodeError, TypeError):
@@ -145,7 +160,6 @@ def obtener_usuario(
 
 
 def require_admin(usuario: UsuarioActual = Depends(obtener_usuario)):
-    """Solo administradores."""
     if not usuario.es_admin:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
@@ -155,7 +169,6 @@ def require_admin(usuario: UsuarioActual = Depends(obtener_usuario)):
 
 
 def require_contador(usuario: UsuarioActual = Depends(obtener_usuario)):
-    """Admin o contador."""
     if not usuario.puede_editar():
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,

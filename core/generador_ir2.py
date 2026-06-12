@@ -1,11 +1,7 @@
 # core/generador_ir2.py
 import os
 import xml.etree.ElementTree as ET
-import pandas as pd
 from datetime import datetime
-from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas
-from reportlab.lib.utils import simpleSplit
 from sqlalchemy.orm import Session
 from database import Empresa, Socio, EstadoFinanciero
 
@@ -87,6 +83,8 @@ class GeneradorIR2:
 
     def _generar_pdf_reporte(self):
         """Genera la constancia de auditoría en PDF."""
+        from reportlab.lib.pagesizes import letter
+        from reportlab.pdfgen import canvas
         filename = f"Constancia_Auditoria_{self.rnc}_{self.ejercicio}.pdf"
         path = os.path.join(self.output_dir, filename)
         

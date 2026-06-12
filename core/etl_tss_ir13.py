@@ -23,11 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
 
-import xlrd
 from database import SessionLocal, TssNomina, Ir18Retenciones, Empresa
 
 def serial_a_mes(serial):
     """Convierte serial Excel a YYYY-MM."""
+    import xlrd
     try:
         if not serial or serial == 0:
             return None
@@ -195,6 +195,7 @@ def procesar_tss_ir13(ruta_archivo, rnc_empresa, anio):
     print(f"  RNC: {rnc_empresa} | Año: {anio}")
     print("=" * 65)
 
+    import xlrd
     wb = xlrd.open_workbook(ruta_archivo)
     hoja = wb.sheet_by_index(0)
     print(f"  [i] Hoja: '{hoja.name}' ({hoja.nrows} filas)")

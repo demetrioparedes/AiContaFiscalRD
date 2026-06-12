@@ -7,7 +7,6 @@ y los carga en la nueva base de datos SQL de producción.
 import re
 import os
 import sys
-import pandas as pd
 from decimal import Decimal, ROUND_HALF_UP, InvalidOperation
 from datetime import datetime
 from database import SessionLocal, Empresa, Dgii606, Dgii607, ClasificacionFiscal
@@ -118,6 +117,7 @@ def asignar_cuenta_contable(tipo_ncf, db):
 # ===========================================================
 
 def cargar_606(ruta_archivo, empresa_id, anio_requerido, db):
+    import pandas as pd
     print(f"  [606] Analizando: {os.path.basename(ruta_archivo)}")
     ext = os.path.splitext(ruta_archivo)[1].lower()
     df = None
@@ -214,6 +214,7 @@ def cargar_606(ruta_archivo, empresa_id, anio_requerido, db):
     return insertados
 
 def cargar_607(ruta_archivo, empresa_id, anio_requerido, db):
+    import pandas as pd
     print(f"  [607] Analizando: {os.path.basename(ruta_archivo)}")
     ext = os.path.splitext(ruta_archivo)[1].lower()
     df = None

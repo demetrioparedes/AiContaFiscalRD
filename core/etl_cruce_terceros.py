@@ -12,8 +12,6 @@ Cruces que genera el sistema:
 """
 import sys, os, glob
 
-import pandas as pd
-
 # Resolución dinámica de ruta del proyecto
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if BASE_DIR not in sys.path:
@@ -24,6 +22,7 @@ from sqlalchemy import and_
 
 def cargar_cruce_606(directorio):
     """Carga el archivo de ingresos según terceros (cruce 606)."""
+    import pandas as pd
     archivos = [f for f in os.listdir(directorio)
                 if 'Terceros' in f and '606' in f and f.endswith('.xls')]
     if not archivos:

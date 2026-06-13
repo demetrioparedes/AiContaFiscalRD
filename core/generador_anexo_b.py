@@ -71,7 +71,7 @@ def generar_reporte_anexo_b(rnc_empresa: str, anio: int):
         and_(
             Dgii606.empresa_id == empresa.id,
             Dgii606.periodo.like(f"{anio_str}%"),
-            Dgii606.anulada != 1
+            Dgii606.anulada != True
         )
     ).group_by(Dgii606.cuenta_contable).all()
 

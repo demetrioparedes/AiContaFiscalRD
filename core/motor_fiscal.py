@@ -245,7 +245,7 @@ class OrquestadorFiscal:
                 and_(
                     Dgii607.empresa_id == self.empresa_id,
                     Dgii607.periodo.like(f"{self.anio_str}%"),
-                    Dgii607.anulada != 1,
+                    Dgii607.anulada != True,
                 )
             )
             .scalar()
@@ -258,7 +258,7 @@ class OrquestadorFiscal:
                 and_(
                     Dgii607.empresa_id == self.empresa_id,
                     Dgii607.periodo.like(f"{self.anio_str}%"),
-                    Dgii607.anulada != 1,
+                    Dgii607.anulada != True,
                 )
             )
             .scalar()
@@ -271,7 +271,7 @@ class OrquestadorFiscal:
                 and_(
                     Dgii606.empresa_id == self.empresa_id,
                     Dgii606.periodo.like(f"{self.anio_str}%"),
-                    Dgii606.anulada != 1,
+                    Dgii606.anulada != True,
                     Dgii606.tipo_bien_servicio != 2,
                 )
             )

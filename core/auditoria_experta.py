@@ -42,7 +42,7 @@ class AuditoriaExperta:
     def _check_inventario_critico(self):
         """Red Flag: Compras en 606 pero Inventario Final en 0."""
         compras = float(self.db.query(func.sum(Dgii606.monto_facturado)).filter(
-            and_(Dgii606.empresa_id == self.empresa_id, Dgii606.periodo.like(f"{self.anio_str}%"), Dgii606.anulada != 1)
+            and_(Dgii606.empresa_id == self.empresa_id, Dgii606.periodo.like(f"{self.anio_str}%"), Dgii606.anulada != True)
         ).scalar() or 0.0)
 
         inv_final = float(self.db.query(func.sum(Inventario.valor_total)).filter(
@@ -62,7 +62,7 @@ class AuditoriaExperta:
     def _check_proporcion_b13(self, umbral_error=5.0, umbral_warn=3.0):
         """Red Flag: Abuso de Comprobantes de Gastos Menores."""
         gastos_totales = float(self.db.query(func.sum(Dgii606.monto_facturado)).filter(
-            and_(Dgii606.empresa_id == self.empresa_id, Dgii606.periodo.like(f"{self.anio_str}%"), Dgii606.anulada != 1)
+            and_(Dgii606.empresa_id == self.empresa_id, Dgii606.periodo.like(f"{self.anio_str}%"), Dgii606.anulada != True)
         ).scalar() or 1.0)
 
         gastos_b13 = float(self.db.query(func.sum(Dgii606.monto_facturado)).filter(

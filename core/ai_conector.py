@@ -45,7 +45,7 @@ async def consultar_ia(
             elif prov == "openrouter":
                 content, usage = await _llamar_openai(
                     "https://openrouter.ai/api/v1/chat/completions",
-                    key, "google/gemini-2.0-flash-exp:free",
+                    key, "google/gemini-2.5-flash-exp:free",
                     prompt, max_tokens
                 )
             else:  # groq
@@ -67,7 +67,7 @@ async def consultar_ia(
 
 async def _llamar_gemini(key: str, prompt: str, max_tokens: int) -> Tuple[str, dict]:
     """Llama a Gemini 2.0 Flash API (gratis 1500 req/día)."""
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
     body = {
         "contents": [{"parts": [{"text": f"{SYSTEM_PROMPT_FISCAL}\n\n{prompt}"}]}],
         "generationConfig": {"maxOutputTokens": max_tokens, "temperature": 0.3},

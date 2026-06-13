@@ -33,7 +33,7 @@ class MotorInventario:
             and_(
                 Inventario.empresa_id == self.empresa_id,
                 Inventario.tipo_inventario == 'inicial',
-                Inventario.fecha_registro.like(f"{self.anio}%")
+                func.extract('year', Inventario.fecha_registro) == self.anio
             )
         ).scalar() or 0.0
         
@@ -55,7 +55,7 @@ class MotorInventario:
             and_(
                 Inventario.empresa_id == self.empresa_id,
                 Inventario.tipo_inventario == 'final',
-                Inventario.fecha_registro.like(f"{self.anio}%")
+                func.extract('year', Inventario.fecha_registro) == self.anio
             )
         ).scalar() or 0.0
         
@@ -85,12 +85,12 @@ class MotorInventario:
         return {
             "anio": self.anio,
             "inventario_inicial": float(self.db.query(func.sum(Inventario.valor_total)).filter(
-                and_(Inventario.empresa_id==self.empresa_id, Inventario.tipo_inventario=='inicial', Inventario.fecha_registro.like(f"{self.anio}%"))
+                and_(Inventario.empresa_id==self.empresa_id, Inventario.tipo_inventario=='inicial', func.extract('year', Inventario.fecha_registro) == self.anio)
             ).scalar() or 0),
             "compras_locales": float(self.db.query(func.sum(Dgii606.monto_facturado)).filter(
                 and_(Dgii606.empresa_id==self.empresa_id, Dgii606.tipo_bien_servicio==2, Dgii606.periodo.like(f"{self.anio}%"))
             ).scalar() or 0),
             "inventario_final": float(self.db.query(func.sum(Inventario.valor_total)).filter(
-                and_(Inventario.empresa_id==self.empresa_id, Inventario.tipo_inventario=='final', Inventario.fecha_registro.like(f"{self.anio}%"))
+                and_(Inventario.empresa_id==self.empresa_id, Inventario.tipo_inventario=='final', func.extract('year', Inventario.fecha_registro) == self.anio)
             ).scalar() or 0)
         }

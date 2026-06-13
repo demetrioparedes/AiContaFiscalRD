@@ -30,7 +30,7 @@ function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     localStorage.removeItem('crnc');
-    window.location.href = '/login.html';
+    window.location.href = '/login';
 }
 
 /* ─── Verificar sesión activa ──────────────────────── */
@@ -51,7 +51,7 @@ function authHeaders() {
 async function safeFetch(url, options = {}) {
     const token = localStorage.getItem('token');
     if (!token) {
-        window.location.href = '/login.html';
+        window.location.href = '/login';
         throw new Error('No autenticado');
     }
     const headers = options.headers || {};
@@ -62,7 +62,7 @@ async function safeFetch(url, options = {}) {
     if (resp.status === 401) {
         // Token expirado o inválido
         localStorage.removeItem('token');
-        window.location.href = '/login.html';
+        window.location.href = '/login';
         throw new Error('Sesión expirada');
     }
 
@@ -81,7 +81,7 @@ function getProfile() {
 /* ─── Proteger página (redirigir si no hay sesión) ── */
 function requireAuth() {
     if (!isLoggedIn()) {
-        window.location.href = '/login.html';
+        window.location.href = '/login';
         return false;
     }
     return true;

@@ -209,8 +209,9 @@ async def root():
     return FileResponse(INDEX_HTML)
 
 @app.get("/login")
+@app.get("/login.html")
 async def login_page():
-    """Sirve la página de inicio de sesión."""
+    """Sirve la página de inicio de sesión. Acepta /login y /login.html por compatibilidad."""
     return FileResponse(os.path.join(STATIC_DIR, "login.html"))
 
 @app.get("/api/health")
